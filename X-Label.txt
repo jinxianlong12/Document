@@ -1,0 +1,39 @@
+agent 설치: 실제로 한개 pc당 하나씩 설치한다.
+1. 지브라 프린터 설치를 한다. --> 제어판->프린터에 추가 되였는지 확인한다.
+2. Agent_20170425.zip 압축을 푼다.
+    bin:backgroud실행파일이 담겨져 있다.
+        Register64.bat 파일실행후 path에서 exe파일을 선택하고 실행하면 서비스가 실행된다.
+        Remove64.bat은 서비스 중지하는 파일이다.
+    image:
+    lib: linux 설치파일이 있다.
+    logs:로그파일들의 저장소.
+    application.properties: 설정파일인다. 실제로 터치하는 부분은 아래 두가지
+                            stomp.server.host = server url-->예제 factory.hatiolab.com
+                            stomp.server.port = server port-->예제 9020
+    elidom-agent.exe: 서버 실행파일이다. 일단 클릭하여 잘 실행되는지 확인한다.
+                      실행이 잘 되면 bin에 있는 파일을 실행하여 backgroud 로 실행한다.
+                      실저 운영에서는 background에서 실행한다. 첨에 실행시 service가 stop상태이므로 start상태로 바꿔준다.
+
+agent화면 접속:
+컴퓨터 IP:9010(http://localhost:9010/)으로 화면에 접속한다. 안되면 컴퓨터 ip를 입력해준다.
+입력할필요 없이 설정을 클릭하고 컴퓨터IP:9010/rest(http://localhost:9010/rest) 를 저장하면 화면의 밑에 부분이 채워진다.
+Master server IP: 서버의 IP를 입력-->예: fw.hatiolab.com(저장했는데 안 나타나면 새로고침 해준다.)
+맨밑에 프린터 리스트들이 뜨고 프린터를 선택하고 저장한다.
+
+Label 화면:
+Label의 설치는 mes설치와 비슷하므로 전의 vm-ubuntu-... 등등의 설치는 생략.
+things-framework-->client-->폴더 밑에 mes폴더는 mes클라이언트 파일들이며 label이란 폴더안에 내용이 label화면의 클라이언트다. 서버는 동일서버 사용.
+nginx의 conf파일에서 mes부분과 똑같게 설정해준다. 수정부분은 server_name과root 설정이다. server_name설정후 hosts파일 수정하면 끝.
+화면접속후 설정탭을 클릭하여 설정을 시작한다:
+Base Url: Server Url/rest-->예제(http://label.hatiolab.com/rest) 접속 URL주소에 /rest를 붙여준다.
+Agent Url: Agent가 설치된 PC의 IP-->(ws://192.168.0.7:9010), 9010은 application.properties파일에서 설정한거고 변경할일 없음
+첨 설치후 그룹추가하고 라벨디자인추가버튼이 없으면 로그아웃하고 다시 로그인하면 된다.
+라벨화면에서 프린트를 테스트 해본다, 설정이 잘되였으면 라벨이 프린트된다.
+--------------------------------------------------------------------------------------------------------------------------------------------
+DPI=203, 출력크기
+zpl online: 온라인테스트 시 ^A6N, 0으로 바꿈, 한글깨짐 문제
+폰트 추가:
+모델링화면에서 추가 할때 ttf파일 가능.
+화면에서 폰트 추가하고 프린터에 뿌려줄때 코드를 맞추어야 된다. 프린터에 같은 폰트를 하고 코드를 맞추면 된다
+프린터 폰트 및 기타 설정은.
+변수는 ${LOT-ID}

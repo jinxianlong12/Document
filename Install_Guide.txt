@@ -1,0 +1,70 @@
+Client环境搭建:
+1. 安装 Redis: https://github.com/MSOpenTech/redis/releases
+
+2. 安装 nodejs:https://nodejs.org/en/
+
+3. nodejs自带npm: npm（node package manager）nodejs的包管理器，用于node插件管理（包括安装、卸载、管理依赖等).
+                  --save：将保存配置信息至package.json（package.json是nodejs项目配置文件）；
+                  -dev：保存至package.json的devDependencies节点
+                  使用npm卸载插件：npm uninstall <name> [-g] [--save-dev]  PS：不要直接删除本地插件包
+                  使用npm更新插件：npm update <name> [-g] [--save-dev]
+                  查看npm帮助：npm help
+                  当前目录已安装插件：npm list
+
+3. 安装bower: 我的电脑→属性→高级→环境变量。在系统变量下新建“NODE_PATH”，输入“C:\Program Files\nodejs\node_global\node_modules”.
+              cmd 管理者模式 -> npm install bower -g
+              进入项目路径, cmd 执行 -bower init  命令, 项目所需的包下载到bower_components文件夹里, 配置文件是bower.json文件.
+              http://elements.hatiolab.com/ 整理了component的用法和属性, 复制下载命令直接cmd里执行的话将自动生成代码和下载文件.
+              例子:install bower --save ThingsElements/things-libraries, 开发时的话可以--save--dev, 将属性添加到配置文件的dev选项里.
+
+
+4. 安装gulp: cmd 管理者模式 -> npm install gulp -g 
+            项目路径 gulp serve 命令的话打开client项目
+            发布时压缩file-> gulp
+
+5. 安装polymer: -cmd 管理者模式 npm install -g polymer-cli
+                指定路径 polymer init 的话创建一个polymer项目. 选择starter-kit
+                polymer serve -o   启动服务打开网页.
+                Atom界面的安装画面搜索栏输入 polymer 安装polymer-snippets, 重启Atom的话html文件里输入文字就有自动提示.
+
+6. 安装 cordova(mobile 开发时安装): cmd 管理者模式 -> npm install -g cordova
+
+项目安装:
+1. Client:
+https://github.com/hatiolab/things-suite 下载项目到指定路径
+cmd到项目路径
+npm install-----node_modules文件夹, 项目环境
+bower install-----bower_components文件夹, 项目所需component包
+开发前bower update
+
+配置文件:
+package.jason文件的scripts标签下
+"startdist": "node_modules/.bin/gulp serve:dist",
+    "serve": "node_modules/.bin/gulp serve",
+
+.bowerrc:
+gitignore: 定义不提交到git的项.
+CONTRIBUTING.md:共同开发时的说明.
+wct.conf.js: 测试.
+README.md: 项目说明.
+
+2. Server:
+安装 Spring STS 3.8.4-->https://spring.io/tools/sts/all
+eclipse-->marketplace-->install buildship(大象图标).
+eclipse-->import-->gradle-Existing Gradle Project-->下一步.... Gradle version选择3.4-->finish
+
+3. DB:
+安装Postgres 9.5以上版本
+数据库-->新建一个数据库-->右键选择恢复-->选择x-mes-XXXXXXX.backup文件
+
+※ 项目里上传下载文件路径设置: 系统管理-->设置-->file.root.path 设置成本地路径.
+
+运营环境搭建:
+安装vm虚拟机
+虚拟机里安装Ubuntu系统-参考百度-->http://blog.csdn.net/u013142781/article/details/50529030
+安装完Ubuntu系统后全屏显示问题: vmware****.tar.gz, 有这个文件的话就直接按步骤来, 没有的话
+                            镜像文件选择C:\Program Files (x86)\VMware\VMware Workstation\linux.iso
+                            vmware****.tar.gz文件复制到home里面
+                            按【Ctrl+Alt+T】调出命令界面,然后在里面输入【tar -zxvf v】后按【Tab】键，自动补全整个工具的名字。然后按enter执行。
+                            输入【cd V】，再按一次TAB键补全被解压后的那个工具目录名字。 回车后进入到该工具解压后的目录里面！
+                            最后输入【sudo ./vmware-install.pl】执行即可安装成功, 重新启动就可以全屏

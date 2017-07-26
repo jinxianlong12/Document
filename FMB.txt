@@ -1,0 +1,11 @@
+1. Oracle설치
+2. Toad 설치
+3. 연결후 TableSpace
+4. DB파일 덤프-->cmd->imp mesmgr/mesmgr@orcl file=路径 full=y
+5. FMB server를 tomcat로 실행: D:\app\27681840\product\12.1.0\dbhome_1\NETWORK\ADMIN-->sqlnet.ora파일에
+                              SQLNET.ALLOWED_LOGON_VERSION=8<--추가한다.
+                              License문제가 생길경우 컴퓨터의 Mac주소를 D:\IDE\apache-tomcat-8.0.37\webapps\fmb-server\WEB-INF\license-->license.txt로 바꾼다.
+                              计算机管理-->网络适配器-->Reltek PCle GEB family controller-->속성->高级->창에서 网络地址가 맥주소임, '-'를 없애고 입력하고 저장.
+      ID: ADMIN
+      PW: HISENSE1234
+6. FMB Designer, FMB Monitor를 설치한다.

@@ -1,0 +1,9 @@
+cmd-->mstsc-->http://112.74.129.22
+id: administrator
+pw: Qhweixun2015
+
+connectionString="server=112.74.129.22;uid=sa;pwd=123;database=weixun_db;"
+
+수정 후 직접 Server에 올림,  수정사항 많음, DB와 연동해야될 부분 결정--> 최소 한주.
+DB는 서버에서 접속가능함, DB설명 파일은 없음.
+파일을 서버에 올리면 접속하여 수정사항들을 수정한다.

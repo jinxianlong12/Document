@@ -1,0 +1,17 @@
+ Machine-------설비같은경우 상태해 대한 관리를 주로 해준다. ERP등이 잘하고 있음 MES에선 수요로 만들어 논건데 잘 사용안함.
+              가동율, 불량가동율, 등등등
+-Tool(툴):설비의 툴을 관리하는 화면.
+-Machine Part(설비 자재):??????????????????????????? 설비와의 관계
+-Machine Event(설비 이벤트):이벤트 설정해주고 실제 현장에서는 어떻게 사용하는지
+-Machine Check Points(설비 점검 체크포인트):
+-Machine Break(설비 고장):
+-Maintenance Plan(설비점검 계획):
+-Maintenance Plan Calendar(설비점검 캘린더):
+-Machine Inventory(설비 재고):
+-Tool Inventory(툴 재고):
+-Machine Repair(설비 수리이력):설비 수리이력을 보여주는 화면
+-Tool Life History(툴 수명이력):툴의 수명을 관리하는 화면, 추가 안됨?????그리드 정보는 어디서 가져오는거지 ???????
+-Consumption Machine Part(설비 자재소모이력):
+-Event Histories(이벤트 이력):
+-Machine Summary(설비 서머리):
+-Machine Running History(설비 가동이력):

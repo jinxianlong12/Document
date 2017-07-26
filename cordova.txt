@@ -1,0 +1,34 @@
+모바일앱 개발 시 사용.
+안드로이드, ios 폰에있는 내부 api를 javascript api로 바꿔주는 플랫폼.
+push 기능 알아볼것: 위챗 push, alibaba push
+
+설치: npm install -g cordova
+새 프로젝트: cordova create MyApp
+웹 플러그인 설치:cordova platform add browser
+안드로이드 플러그인 설치:cordova platform add android
+브라우저로 보기: cordova run browser
+android 보기: cordova run android
+sdk: https://developer.android.com/studio/index.html
+압축 풀면 tools 폴더가 생긴다. 폴더안에 android.bat파일을 클릭하여 설치를 시작한다(default로 설치).
+Path에 tool과flatform의 경로를 추가한다.
+AVD Manager를 실행하려면 cmd-->android avd
+안드로이드 sdk 설치 후: cordova platform add android 하면 plugin에 android폴더가 생긴다.
+
+github里下载x-mobile
+项目路径 npm install
+        bower install
+        gulp-----www文件夹里面添加所需包
+        cordova platform add browser
+        cordova platform add android
+
+브라우저로 보기: cordova run browser
+android 보기: cordova run android
+
+----------------------------------------------------------------------------------
+프레임웍은 하나.
+config.xml 설정하여 mes와 연동.
+메뉴 설정에서 mobile추가 .
+검색부분처리, 그리드-->리스트로 변환
+팝업 사이즈 변경.
+
+PWA-Progressive Web Apps 

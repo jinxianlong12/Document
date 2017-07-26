@@ -1,0 +1,65 @@
+X-MES Publisher--------------------------------
+restful url: {{factory_url}}/rest/publishers/initData?subject={{SCENE_ID}}
+   http://xmes.qhweixun.com/rest/publishers/initData?subject=/elidom/stomp/topic/hatiolab-hq/smart/SCENE-1
+Path: /elidom/stomp/topic/hatiolab-hq/smart/{{SCENE-NAME}}
+명칭: 디자인 화면 이름과 같게 한다. Publisher가 여러개 필요할경우 약간씩 차이를 주고 경로는 동일하게 해야한다.
+서비스 로직:
+리턴타입-->>> single variable인 경우에 변수값을 지정해 주지 않아도 sql이름값과 컴포넌트 ID값이 같으면 매핑된다.
+              나머지 경우엔 변수값을 지정해 주어야 보드 화면에서 변수값과 같은 ID에 데이터가 채워지게 된다.
+key-value Array--차트, 테이블용
+key-value object--포맷키, 포맷값 입력, 튜토리얼 참고.
+key-object object--포맷키입력
+single variable--하나의 데이터 용.
+custom--미 개발.
+
+scene 가져오기: Mes-->라벨-->Scene 화면에서 가져오기 버튼 클릭. 주소창에 ***/rest/scenes/168, ***은 서버,
+http://hatiolab.pointhing.xyz/rest/scenes/168
+비디오의 url: ws://192.168.0.3 (WS Video URL)
+mes화면의 라벨-->scene화면은 보여주기만 하는 화면이다. 이미지들은 시스템 설정에 file.context.path 설정한 경로에서 불러온다.
+
+디자인 화면 속성창-------------------------------
+Series:
+Data key-서버로 부터 받은 데이터셋에서 해당 키값의 데이터를 가져온다.
+기타속성들은 메뉴얼 참고.
+보여줄 라인 혹은 바가 여러개이면 탭을 추가.
+X Axes:
+Data Key-x축에 보여질 키값을 선택.
+테이블: dataKey-->db필드, dataIndex-->매핑할 순서, 0부터 시작.
+Mapping:
+말그래로 매핑시켜줄 컴포넌트를 지정한다.
+accessor->오브젝트 혹은 Array경우 내부값에 접근 시 [0]혹은 ['value']로 접근가능.
+target->값을 넣어줄 컴포넌트 ID
+
+属性---------------------------->
+text--글씨
+fillStyle--배경채우기 색상
+strokeStyle--윤곽선 색상
+fontColor--글씨 색상
+rotation--회전
+hidden--숨김
+location--위치 좌표 {x:100,y:100}->데이터를 서버로 부터 받아서 구현함, 직접 디자인 화면에서 설정하면 에러남
+dimention--크기(데이터 형식과 사용방법은 location과 동일)
+data--Array 혹은 Object
+value--단일 값
+started--:데이터 값을 받아 애니메이션 시작시킬때 사용
+reference--global-ref 컴포넌트에서 reference 속성 바꿀때 사용.
+
+目标----------------------------->
+self--자기 자신을 타겟으로 하는거고
+parent--자기를 포함하고 있는 컴포넌트
+child--자기가 포함하고 있는 컴포넌트
+sibling--자신과 parent가 동일한 컴포넌트들
+container나group에서 사용
+
+规则类型---------------------------->
+Value-값
+map-여러개 키-value형식의 값을 지정하여 컴포넌트 값과 비교하여 value를 보여줌.
+range-범위를 지정하여 값이 지정된 범위에서 설정된 값을 보여준다.
+eval-function
+
+창고 컴포넌트:
+1.rack-창고용 랙을 표현할 때 사용하는 컴포넌트. 높이와 층을 적용할 수 있으며 랙과 층마다 고유 ID를 부여할 수 있다.
+2.container-안에 다른 컴포넌트를 포함시킬 수 있다.
+3.indoor map-tab과 같이 사용되며 indoor의 id를 지정하고 tab reference를 indoor의 id와 같게 하면 둘이 한 세트가 된다.
+4.person, forklift-3D용 사람과 지게차.
+5.beacon과humidity sensor는 현재로선 기능없음.

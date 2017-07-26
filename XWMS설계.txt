@@ -1,0 +1,2 @@
+구조: WareHouse(Domain)-->Organization-->Inventory-->Location-->Address
+

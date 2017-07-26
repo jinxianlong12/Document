@@ -1,0 +1,42 @@
+windows环境的话安装gradle cli https://gradle.org/releases下载complete版本 3.5
+eclipse也可以打包 windows-show view->others->gradle executions-> build->
+
+windows환경에서 파일 복사 안되고 할때 원격등 상황 windowscp를 이용한다.
+scp test.jar 사용자명칭@ip:/폴더경로/test.jar
+
+postgres 설치하고 설정들을 ppt와 같이 한다.
+설치후 sudo service postgresql restart
+main폴더에서 ifconifg치면 ip 주소가 나온다.
+postgres Admin에서 IP입력하여 접속한다.
+
+파일 경로 밑에서   gradle build 하면 jar파일이 만들어 진다.
+파일을 vm환경으로 복사한다.
+server 의 properties 파일  spring.profiles=development 로 설정.
+로그파일은 logging.config=classpath:WEB-INF/logback-spring-dev.xml dev를 지워준다.
+
+프로퍼티 파일 설정완료후
+씨드를 실행
+실행완료후 서버를 종료하고 프로덕션 프로퍼티파일에서
+DB설정 잘 되였는가 보고
+quartz.scheduler.enable=true 되였는가 보고
+***.ddl.enable=false
+밑에 설정 true
+
+background로 실행하기위하여 nohup으로 명령시작하고 마지막에 &<--end표시임
+
+
+service redis-server satatus/start/stop/restart
+service postgresql satatus/start/stop/restart
+service nginx satatus/start/stop/restart
+
+client 파일은 client 폴더 안에서 gulp하면 dist폴더안에 만들어 진다.
+에러가 생기면 대부분 경로 문제이다.
+dist폴더 안에 파일들을 vm의 client폴더 안으로넣고 jar파일을 server 폴더 안에 넣는다.
+
+server.contrext.path	Server Context Path	http://fw.hatiolab.com
+stomp.server.host	Stomp Server Host	fw.hatiolab.com
+stomp.server.port	Stomp Server 	9020
+file.context.path	File Context Path	http://fw.hatiolab.com:8000
+file.root.path	File Storage Root Path	/home/jinxianlong/uploads
+
+redis.exe-->flushall

@@ -1,0 +1,65 @@
+Developer-------
+-Entity(엔티티): 엔티티들을 등록하고 테이블 생성, 엔티티생성, 서비스 생성, 메뉴생성 등을 한다. 컬럼 설정 시 신경 써야 함.
+-Table Manager(테이블관리자): 테이블들을 정보를 수정 가능.
+-ID Rule(ID룰정의): 시스템에서 사용되는 ID룰을 정의하여 서버에서 호출해서 사용가능
+-Sequence(시퀀스): 현재 Lot상태라고 보면 된다. OI에서 Lot이 생성되면 자동으로 추가 된다.
+-Custom Service(커스텀서비스): 동적인 서비스를 생성하여 화면과 연동하고 서버와도 연동하고 커스텀 그리드와도 연동.
+                              Report화면 개발 시 서버쪽 터치 없이 커스텀그리드 및 화면과 연동하여 다양한 Report화면을 만들수 있다.
+-Custom Form(커스텀폼): 자주사용되는 폼들을 미리 정의 해놓고 화면개발 시 사용할 수 있다.
+-Custom Grid(커스텀그리드): 화면 개발 시 사용될 수 있고 커스텀 서비스와 연동하여 Report를 쉽게 구현할 수 있다.
+-View Columns(뷰컬럼관리): diy service, diy gird등등에서 정의해놓은 컬럼들
+-Custem Template(커스텀템플릿):----------------------------
+-Layout Template(레이아웃템플릿): 개발 시 사용되는 레이아웃들을 정의.
+-Alarm(알람): 알람을 만들고 서버와 연동하여 사용. 모바일 푸시 미개발.
+-Channel(채널관리): Publisher와 반대로 데이터를 받아서 처리할때 사용.
+-Publisher: 주로 X-Monitoring에 데이터를 파싱할때 사용된다. 화면 오른쪽위 알림을 보낼때도 쓰임.
+-Job: 시간 주기 등을 설정하여 해당 시간 혹은 주기마다 서버에 요청을 보낸다. Dynamic, Query, Static등이 있다.
+      Dynamic과Query는 직접 Groovy혹은Sql을 사용하여 로직을 작성하고
+      Static은 Handler에 서버의 패키지(yz.elidom.base.job.StaticJob)을 설정하여 해당 서비스를 실행한다.
+-Job Histories: Job 이력.
+-Approval Action(승인후액션):----------------
+-Approval Action History(승인후액션이력):-------------------
+-Data Source(데이터소스): 여러 DB들의 소스 정보
+-Modbus(모드버스): 설비와 연동 시 사용(개발중)
+-Error Log(에러로그): 시스템에서 에러가 발생할 때마다 추가된다. 에러들을 ID, Status(404등등), Header등
+
+엔티티:
+테이블 만들때 ID가 무조건 있어야 한다. receive_time 체크컬럼 하면 아래 자동으로 생김
+모든걸 생성하면 소스코드에 자동으로 생성됨.
+index는 자바 파일에서 설정함
+
+커스텀 서비스:
+서비스 만들고 테스트 할때 서비스명세->DiyServiceController->read에 찾아가서 name을 본인이 만든 서비스 이름으로 변경하면 테스트 할 수 있다.
+커스텀 서비스로 report를 만든다.
+grovy java 언어 쓰는것처럼 쓰면 된다, import 꼭 해주고, 변수 설정은 def.  po_trx 참고.
+실제 자바클래스 Controller에서 정의된 커스텀 서비스를 호출할수 있다. poController의 list펑션 참고.
+커스텀 서비스의 search_purchase_order와 po_trx참고
+
+커스텀 그리드:
+메뉴설정시 상세팝에서 리소스타입 custom grid로 선택하고  리소스 url을 커스텀 서비스에서 만든걸로 설정한다.
+
+차트 사용:
+커스텀 서비스를 만든 후 메뉴->새메뉴 만든다. 리소스 url은 커스텀 서비스의 url로 하고 shoot.json을 read로 바꿔주면 된다.
+메뉴생성 시 컬럼들은 커스텀 서비스에서 호출 시 불러오는 필드들로 설정한다.
+라우팅 타입은 static routing
+barchart: 화면+커스텀서비스
+gridchart: 화면+커스텀서비스+커스텀그리드
+
+알람사용:
+탬플릿 만들고 로직을 설정한다.
+Controller에서 해당메일 이름으로 알람을 호출한다. Controller에 정의하고 @Async 해주고 엔티티에서 호출
+@Async
+public Boolean sendMail(PurchaseOrder po){
+  System.out.println("my after Create....");
+   System.out.println("==============sendmail======================");
+    AlarmController ctrl = BeanUtil.get(AlarmController.class);
+    Map<String, Object> variables = ValueUtil.newMap("purchaseOrder", po);
+    ctrl.execute("PurchaseCreateMail", variables);
+  return true;
+}
+
+자세한 내용 알람->PurchaseCreateMail 참고.
+
+job사용:
+job화면 참고.
+/elidom/stomp/topic/hatiolab-hq/smart/SCENE-172

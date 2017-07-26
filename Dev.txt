@@ -1,0 +1,30 @@
+클라이언트-----------------------------------------------------------------------------------------------------------------------------------
+-things-bundles폴더가 현재화면 구성 및 개발할 화면들을 포함하는 폴더이다.
+-base-시스템, 개발자 메뉴의 화면들을 구성한 파일들.
+-html파일 naming rule: things 뒤에 폴더이름
+-function name 규칙: 내부에서 쓰는건 언더바'_' 붙임.
+-things-모듈명-elements에 해당 모듈에서 만든 파일들을 정의 하고 things-모듈명-elements를 things-app-import파일에 설정해준다.
+-버튼에 리스너 추가할때 버튼이름-btn-tap
+-<content></content>의 사용:
+  해당태그가 사용된 페이지-----자식
+  해당 페이지를 사용한 페이지-----부모
+  부모페이지에서 자식페이지dom-module id로 된 태그안에 내용을 구현하면 자식페이지의 <content></content>안에 내용이 표현된다.
+  자식페이지에서 notify:true 명시해야 부모페이지에 값이 전달된다.
+-[[]]: [[name]]값을 보여주는것이고
+-{{}}: 변수가 변경될때 {{}}사용: {{name::change}} name값을 변경할 수 있다.
+
+-e.preventDefault();// 기존의 event는 중단이 됨
+-서버에 보내는 기본파라미터 외에 더 보내고 싶을때 사용-->event.detail.request.params.company = 'hatiolab';
+-param들을 가져오는 메소드-->this.params=event.detail.serializeMyform();
+-ajax로 요청을 보낸다.-->this.$['reload-cache'].generateRequest();
+-페이지 이동.-->page('/common_codes');
+-초기 파라미터가 있다면 설정해준다.-->event.detail._bindInitialParams();
+-Start Spinner-->event.detail.startSpinner();
+-Submit-->event.detail.getMyForm().submit();
+-0.3초에 한번만 요청 보낸다.-->debounce-duration="300":
+-this.$['search-form'].submitMyForm();
+-var serialGird = this.$['serial-grid']; var serialCount = this.$['serial_count'].value; var count = serialGird.totalCount;
+
+기타----------------------------------------------------------------------------------------------------------------------------------------
+1. OI Lot 흐름은 모두 LotTrxController-->shoot()를 거친다. shoot()에서 화면의  WIP모듈->Transaction에서 정의한것들을 호출하여 기능을 구현한다.
+2. WorkOrder를 실행하려면 자재를 serial(관건자재라는뜻)을 선택해주고 Routing에서 线边仓을 지정해 줘야 시작할수 있다.
