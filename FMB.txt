@@ -1,11 +1,75 @@
-1. Oracle설치
-2. Toad 설치
-3. 연결후 TableSpace
-4. DB파일 덤프-->cmd->imp mesmgr/mesmgr@orcl file=路径 full=y
-5. FMB server를 tomcat로 실행: D:\app\27681840\product\12.1.0\dbhome_1\NETWORK\ADMIN-->sqlnet.ora파일에
-                              SQLNET.ALLOWED_LOGON_VERSION=8<--추가한다.
-                              License문제가 생길경우 컴퓨터의 Mac주소를 D:\IDE\apache-tomcat-8.0.37\webapps\fmb-server\WEB-INF\license-->license.txt로 바꾼다.
-                              计算机管理-->网络适配器-->Reltek PCle GEB family controller-->속성->高级->창에서 网络地址가 맥주소임, '-'를 없애고 입력하고 저장.
-      ID: ADMIN
-      PW: HISENSE1234
+1. 오라클 DB Name, ID, PW
+2. FMB_SERVER 복사 후
+3. D:\IDE\FMB_Server_Test\tomcat\conf 의 server.xml에서 포트를 9080으로 변경.
+4. D:\IDE\apache-tomcat-8.0.37\webapps\fmb-server\WEB-INF\config  config.propertie파일을 수정한다.
+      server.monitoringScope.factory.default=RAMAXEL
+      file.rootPath=D:/FMB_Server_Test/files
+      Database Name, ID, PW를 바꿔준다.
+5. tomcat start후 http://localhost:9080/fmb-server/ 서버에 접속해서 테스트 한다.
 6. FMB Designer, FMB Monitor를 설치한다.
+
+
+제품설치----------------周工
+1. Oracle설치,톰캣설치,Toad 설치,jdk1.7설치, class_path, jre_home등을 지정
+2. war파일 배포시 네임 수정 후(뒤에 버전번호 등을 삭제) 배포, webapps폴더안에 넣는다.
+3. tomcat 목록에서 server.xml찾아 들가서 port를 9080으로 바꿔준다.
+-----FMB에 필요한 테이블은 Tomcat Start 할때 자동으로 생성된다.
+4. D:\IDE\apache-tomcat-8.0.37\webapps\fmb-server\WEB-INF\spring 목록의 beans-ds-biz.xml에서 datasource를 설정한다.
+      데이터 소스를 추가하려면 D:\IDE\apache-tomcat-8.0.37\webapps\fmb-server\WEB-INF\spring목록아래beans-hibernate.xml파일에 
+      <prop key="dialect.postgresql">org.hibernate.dialect.PostgreSQLDialect</prop> 추가한다. 
+5. 설정완료후 D:\IDE\apache-tomcat-8.0.37\webapps\fmb-server\WEB-INF\lib 에 驱动.jar파일을 추가한다.
+6. D:\IDE\apache-tomcat-8.0.37\webapps\fmb-server\WEB-INF\config  config.propertie파일을 수정한다. 기본적인 정보들 다 여기 들어있음
+      목록, 아이디 비번, factory등등, 기본적으로 Factory, file.rootPath, 数据源세가지를 바꾸면 된다.  
+      server.monitoringScope.factory.default=Factory Name
+      file.rootPath=파일저장경로.
+      Database 이름을 바꿔주면 오케.
+
+7. D:\IDE\apache-tomcat-8.0.37\webapps\fmb-server\WEB-INF\license 라이센스 새거 있으면 바꿔주면 된다.
+8. FMB Designer, FMB Monitor를 설치한다.
+
+
+교육
+第一天
+제품설치--, 환경 구축 등.
+1. 구조소개: 서버, 클라이언트, 모니터 등등
+2. 아키텍처 소개
+3. 제품 설치 환경들 간단하게 소개. ipad 라이센스는 따로 구매해야 함
+4. 너무 자세하게 말할 필요 없구 넘어갈건 넘어가고 중점만 캐치해서 말한다.
+5. 설치부터 간단하게 환경 구성 등등, jdk 1.6, 1.7사용. 
+6. 서버쪽은 주로 datasource를설정할때 사용.
+7. 모니터링에서 보드가 안보일때 설정 들어가서 show only published 체크를 취소하면 다 보인다.
+8. 일반적으로 publishe 주기는 30초 이상으로 해주는것이 좋다.
+9. 게이지->value, Label->text-> 도형색갈->fillcolor, 데이터 복잡한건 DataXml
+10. tag는 datasource매핑할때 쓰고 name은 같은 컴포넌트끼리 지정할때 사용,  액션 사용이라든지 차트에 두가지 바를 보여준다던지.
+
+第二天
+11. Action을 사용하고자 할때 action컴포넌트의 target속성들을 지정하고(예제 참고), 버튼의 Action혹은 onaction, offaction 등을지정(toogle속성을 true로 설정)
+      target Effet속성에 실현하고자 하는 액션을 영문으로 적어준다 (visible, fillColor).
+      실제 사용중에서 직접클릭하면서 액션 취하는 경우가 적다
+12. copy Action을 사용할때 source, sourceEffect(뭘할지, 예  text), target등을 설정해준다.
+      hyperlink는 화면이 바뀌고 , WebUrlAction은 지정된 URL로 이동한다.
+13. timer사용시 Action들을 지정하고  interval을지정하고 , Run Method를 지정하고, Active를 true로설정하면 자동으로 실행, 나머지 action설정은 위하고 동일.
+14. 왼쪽메뉴 맨밑에 embed를 새로하나 만들고 설계화면에서 embed이름을 설정하고 filpanimation을 설정해주면 border scale mdoe
+      시간간격으로 轮播해준다, 모니터링의 play그룹 역할.
+15. file은 swf, mp3지원 image업로드
+
+第三天
+1. Dashboard
+2. 차트 두개, 세개 같이 나타내는거. 
+3. gauge, 파이차트, 게이지 등 valueColor설정으로 색갈을 채운다
+4. 시계는 마지막걸 주로 마니씀 value Type으로 바꿔준다, 혹은 format선택후 format text속성에서 바꿔준다. 년월일 다 표현하려 할때 컴포넌트 두개로 표현
+5. 오후 factory: 그림그려주는거임 데이터 매핑은 없고 传输带-->设置方向->属性 Direction, Effect Direction등드
+6. form: form 까지만 설명함. 조건 검색시 필요함-->서버화면 모니터링 데이터의 데이터에서(TEST03을 참고) DataParam을 입력하고 주기를 무조건 0초로 설정한다.
+7. 차트에서 max value를 지정해주면 max값이 다른 차트들이 같이 나올때 보기좋게 나옴(06_KPI참고)
+
+설비 모니터링 화면:데이터 소스 컴포넌트에 다른컴포넌트 포함 시킬 때-->먼저 데타소스컴포넌트 클릭 후 하나하나 클릭하여 오른쪽 마우스 
+      mapping scope-->children, Default rrow-->TAP-01(id 값), index Cloumn을 ID로 지정해주면 된다(어느 id의 값을 가져오겟다는 뜻).
+      create new tag parameter에서 데이터 매핑을 하고 runtime에서 템플릿 이름을 지정해 준다(05_EQ 참고). 혹은
+      DATAFILTER탭을 이용하여 구현할수 있다.(06_KPI 참고) 
+
+第四天
+보충 및 질문 대답 및 숙제
+marquee: 글이 오른쪽으로 이동하는 애니메이션
+popup액션 및 form 액션------>init param탭, 다른화면에서 데이터가 넘어올때 받을때 사용한다.(EDU_03.Tools_01(Action01), EDU_POPUP_CETC 참고.)
+
+
