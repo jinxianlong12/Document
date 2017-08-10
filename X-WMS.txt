@@ -1,6 +1,7 @@
 ﻿组织-->库存分组-->库存地点-->物理位置
-组织-->部门-->车间-->线体
 惠州厂-->电子仓-->电子材料仓-->Location(R38)
+구조: WareHouse(Domain)-->Organization-->Inventory-->Location-->Address
+组织-->部门-->车间-->线体
 
 * 목적 : 제조2025 기조에 대응하는 차세대 기업용 창고관리솔루션(Enterprise Warehouse Management Solution)을 개발하고자 함
 * 목표 고객 및 용도 : 
