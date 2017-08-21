@@ -1,33 +1,3 @@
-1. 오라클 DB Name, ID, PW
-2. FMB_SERVER 복사 후
-3. D:\IDE\FMB_Server_Test\tomcat\conf 의 server.xml에서 포트를 9080으로 변경.
-4. D:\IDE\apache-tomcat-8.0.37\webapps\fmb-server\WEB-INF\config  config.propertie파일을 수정한다.
-      server.monitoringScope.factory.default=RAMAXEL
-      file.rootPath=D:/FMB_Server_Test/files
-      Database Name, ID, PW를 바꿔준다.
-5. tomcat start후 http://localhost:9080/fmb-server/ 서버에 접속해서 테스트 한다.
-6. FMB Designer, FMB Monitor를 설치한다.
-
-
-제품설치----------------周工
-1. Oracle설치,톰캣설치,Toad 설치,jdk1.7설치, class_path, jre_home등을 지정
-2. war파일 배포시 네임 수정 후(뒤에 버전번호 등을 삭제) 배포, webapps폴더안에 넣는다.
-3. tomcat 목록에서 server.xml찾아 들가서 port를 9080으로 바꿔준다.
------FMB에 필요한 테이블은 Tomcat Start 할때 자동으로 생성된다.
-4. D:\IDE\apache-tomcat-8.0.37\webapps\fmb-server\WEB-INF\spring 목록의 beans-ds-biz.xml에서 datasource를 설정한다.
-      데이터 소스를 추가하려면 D:\IDE\apache-tomcat-8.0.37\webapps\fmb-server\WEB-INF\spring목록아래beans-hibernate.xml파일에 
-      <prop key="dialect.postgresql">org.hibernate.dialect.PostgreSQLDialect</prop> 추가한다. 
-5. 설정완료후 D:\IDE\apache-tomcat-8.0.37\webapps\fmb-server\WEB-INF\lib 에 驱动.jar파일을 추가한다.
-6. D:\IDE\apache-tomcat-8.0.37\webapps\fmb-server\WEB-INF\config  config.propertie파일을 수정한다. 기본적인 정보들 다 여기 들어있음
-      목록, 아이디 비번, factory등등, 기본적으로 Factory, file.rootPath, 数据源세가지를 바꾸면 된다.  
-      server.monitoringScope.factory.default=Factory Name
-      file.rootPath=파일저장경로.
-      Database 이름을 바꿔주면 오케.
-
-7. D:\IDE\apache-tomcat-8.0.37\webapps\fmb-server\WEB-INF\license 라이센스 새거 있으면 바꿔주면 된다.
-8. FMB Designer, FMB Monitor를 설치한다.
-
-
 교육
 第一天
 제품설치--, 환경 구축 등.
@@ -72,4 +42,29 @@
 marquee: 글이 오른쪽으로 이동하는 애니메이션
 popup액션 및 form 액션------>init param탭, 다른화면에서 데이터가 넘어올때 받을때 사용한다.(EDU_03.Tools_01(Action01), EDU_POPUP_CETC 참고.)
 
+1. 오라클 DB Name, ID, PW
+2. FMB_SERVER 복사 후
+3. D:\IDE\FMB_Server_Test\tomcat\conf 의 server.xml에서 포트를 9080으로 변경.
+4. D:\IDE\apache-tomcat-8.0.37\webapps\fmb-server\WEB-INF\config  config.propertie파일을 수정한다.
+      server.monitoringScope.factory.default=RAMAXEL
+      file.rootPath=D:/FMB_Server_Test/files
+      Database Name, ID, PW를 바꿔준다.
+5. tomcat start후 http://localhost:9080/fmb-server/ 서버에 접속해서 테스트 한다.
+6. FMB Designer, FMB Monitor를 설치한다.
 
+제품설치----------------周工
+1. Oracle설치,톰캣설치,Toad 설치,jdk1.7설치, class_path, jre_home등을 지정
+2. war파일 배포시 네임 수정 후(뒤에 버전번호 등을 삭제) 배포, webapps폴더안에 넣는다.
+3. tomcat 목록에서 server.xml찾아 들가서 port를 9080으로 바꿔준다.
+-----FMB에 필요한 테이블은 Tomcat Start 할때 자동으로 생성된다.
+4. D:\IDE\apache-tomcat-8.0.37\webapps\fmb-server\WEB-INF\spring 목록의 beans-ds-biz.xml에서 datasource를 설정한다.
+      데이터 소스를 추가하려면 D:\IDE\apache-tomcat-8.0.37\webapps\fmb-server\WEB-INF\spring목록아래beans-hibernate.xml파일에 
+      <prop key="dialect.postgresql">org.hibernate.dialect.PostgreSQLDialect</prop> 추가한다. 
+5. 설정완료후 D:\IDE\apache-tomcat-8.0.37\webapps\fmb-server\WEB-INF\lib 에 驱动.jar파일을 추가한다.
+6. D:\IDE\apache-tomcat-8.0.37\webapps\fmb-server\WEB-INF\config  config.propertie파일을 수정한다. 기본적인 정보들 다 여기 들어있음
+      목록, 아이디 비번, factory등등, 기본적으로 Factory, file.rootPath, 数据源세가지를 바꾸면 된다.  
+      server.monitoringScope.factory.default=Factory Name
+      file.rootPath=파일저장경로.
+      Database 이름을 바꿔주면 오케.
+7. D:\IDE\apache-tomcat-8.0.37\webapps\fmb-server\WEB-INF\license 라이센스 새거 있으면 바꿔주면 된다.
+8. FMB Designer, FMB Monitor를 설치한다.

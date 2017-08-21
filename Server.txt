@@ -1,22 +1,13 @@
 ORM: DB연동, 멀티 DB 등등
-
 System: Framwork을 관리하는 모든 기능을 가지고 있다. 알람, 엔진.. 등등등 여러가지.
         모듈화 기능-핵심기능.
-
 Core: 첨부파일
-
 Base: 메뉴, 엔티티, 권한등등, Base모듈이 들어가면 자동으로 엔티티, 메뉴, 테이블 등을 생성하는 기능들을 포함.
-
 Dev: 커스텀 서비스, 커스템 탬플릿 등 커스텀 기능들이 들어가 있다.
-
 Job: quartz.properties에서 어떤 db에 붙을건지 설정
-
 Agent: agent들을 관리하는것이 agent manager
-
 Label을 구성하려면  base모듈+agent manager
-
 Board를 구성하려면 job과 Stomp
-
 
 설정:
     scene-->application.properties:
@@ -27,20 +18,13 @@ Board를 구성하려면 job과 Stomp
                                     date-format=yyyy-MM-dd HH:mm:ss-> date 포멧 형식
                                     INDENT_OUTPUT=true-> 포맷에 맞게, false면 한줄
                                     serialization-inclusion=non-null->null인 경우에 파일에 포함 안된다.
-
                                     Security--> 노터치
-
-
                                     새버전엔 seed 어쩌구 저쩌구 추가 되였음
-
-
 watap service
 Admin Server: start/stop/log/
 Asset Server: 설치 탬플릿 관리, 데이터 Seed
 CI Server: 배포파일들 관리.
-
 boot, scene, label은 띄울수 있는것이고 나머지는 라이브러리다.
-
 boot에서  build gradle 수정한다.
 이름바꾸고
 dependencies를 설정해주고
