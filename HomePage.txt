@@ -1,9 +1,16 @@
 cmd-->mstsc-->http://112.74.129.22
 id: administrator
 pw: Qhweixun2015
-
+-----------------------------------------------------------
 connectionString="server=112.74.129.22;uid=sa;pwd=123;database=weixun_db;"
-
-iisreset
-
+-----------------------------------------------------------
 右键-->编辑-->修改域名和port
+-----------------------------------------------------------
+homepage email: weixun@qhweixun.com
+                Weixun2017
+-----------------------------------------------------------
+http://www.qhweixun.com:8090/wxvips/login.aspx
+ID: admin
+PW: wxadmins
+-----------------------------------------------------------
+new-web에서 소스 수정하고 커밋하고  html-new에서 업데이트 한다. 

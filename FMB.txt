@@ -13,13 +13,16 @@
 10. tag는 datasource매핑할때 쓰고 name은 같은 컴포넌트끼리 지정할때 사용,  액션 사용이라든지 차트에 두가지 바를 보여준다던지.
 
 第二天
-11. Action을 사용하고자 할때 action컴포넌트의 target속성들을 지정하고(예제 참고), 버튼의 Action혹은 onaction, offaction 등을지정(toogle속성을 true로 설정)
+11. Action을 사용하고자 할때 action컴포넌트의 target속성들을 지정하고(예제 참고), 버튼의 Action혹은 onAction, offAction(첨클릭할때 실행된다.)
+      등을지정(toogle속성을 true로 설정)
+      target Effet속성에 실현하고자 하는 액션을 영문으로 적어준다 (visible, fillColor).
       target Effet속성에 실현하고자 하는 액션을 영문으로 적어준다 (visible, fillColor).
       실제 사용중에서 직접클릭하면서 액션 취하는 경우가 적다
 12. copy Action을 사용할때 source, sourceEffect(뭘할지, 예  text), target등을 설정해준다.
       hyperlink는 화면이 바뀌고 , WebUrlAction은 지정된 URL로 이동한다.
 13. timer사용시 Action들을 지정하고  interval을지정하고 , Run Method를 지정하고, Active를 true로설정하면 자동으로 실행, 나머지 action설정은 위하고 동일.
-14. 왼쪽메뉴 맨밑에 embed를 새로하나 만들고 설계화면에서 embed이름을 설정하고 filpanimation을 설정해주면 border scale mdoe
+14.  embed컴포넌트 board Name 설정하고 filpanimation을 설정해주면 border scale mdoe-->fit
+      multy embed컴포넌트는 embed Senario를 지정해준다, 시나리오는 왼쪽메뉴 맨밑에 embed를 새로하나 만들고 설계화면에서
       시간간격으로 轮播해준다, 모니터링의 play그룹 역할.
 15. file은 swf, mp3지원 image업로드
 
@@ -41,7 +44,7 @@
 보충 및 질문 대답 및 숙제
 marquee: 글이 오른쪽으로 이동하는 애니메이션
 popup액션 및 form 액션------>init param탭, 다른화면에서 데이터가 넘어올때 받을때 사용한다.(EDU_03.Tools_01(Action01), EDU_POPUP_CETC 참고.)
-
+-------------------------------------------------------------------------------------------------------------------------------------------------
 1. 오라클 DB Name, ID, PW
 2. FMB_SERVER 복사 후
 3. D:\IDE\FMB_Server_Test\tomcat\conf 의 server.xml에서 포트를 9080으로 변경.
@@ -68,3 +71,40 @@ popup액션 및 form 액션------>init param탭, 다른화면에서 데이터가
       Database 이름을 바꿔주면 오케.
 7. D:\IDE\apache-tomcat-8.0.37\webapps\fmb-server\WEB-INF\license 라이센스 새거 있으면 바꿔주면 된다.
 8. FMB Designer, FMB Monitor를 설치한다.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+년월일통계, 지역별 정보...----011
+생산정보--------->012
+라인 운행상황 월별 일별----013
+라인별 목표대비 생산실적----029
+입고 출하 생산실적 등----030
+월별, 일별 가동율----031(이쁨)---032
+검사량, 달성율, 일달성푝표 등등----033
+Cycle Time, Alarm detail----036
+rate, plan 전체화면이 테이블임--038
+버스간판 예제----040
+위치별 영업액----041
+노트 다이어리 형식----042
+공지사항----046
+서비스운영정황 빨간불 파란불----047
+종합지표현황----048,049
+서비스개선현황모니터링----050
+수주현황, 협력사 현황, 발주현황 등등----051,052,053
+전력공급----066
+장비현황, cpu memory----067, 069, 070,071,072
+생산현황----073,074,076
+
+완성된 화면들--------------------------------------------
+생산현황----DashBoard001
+주간설비효율----DashBoard002
+주간생산현황판----DashBoard003
+종합생산현황----DashBoard004,DashBoard005,DashBoard010
+누적생산현황----DashBoard006
+주간설비효율----DashBoard007
+공정별설비효율----DashBoard008
+월간생산현황----DashBoard009
+월간라인별----DashBoard011
+공장별----DashBoard012
+KPI----EDU10-KPI
+설비모니터링----EDU10-Line&Alarm
