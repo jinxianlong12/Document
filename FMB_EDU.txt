@@ -1,3 +1,17 @@
+1. 讲解结构
+2. 
+
+
+
+
+
+
+
+
+
+
+
+
 Combo_Table----------------------------
 
 Combobox:
@@ -24,4 +38,7 @@ Action_popup:
 DataSource:
     绑定Combobox
 Popup-->Init Parameters:参考示例界面
+
+
+http://172.26.16.164:9080/fmb-server/login.jsp
 
