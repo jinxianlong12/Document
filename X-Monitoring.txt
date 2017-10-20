@@ -63,3 +63,31 @@ eval-function
 3.indoor map-tab과 같이 사용되며 indoor의 id를 지정하고 tab reference를 indoor의 id와 같게 하면 둘이 한 세트가 된다.
 4.person, forklift-3D용 사람과 지게차.
 5.beacon과humidity sensor는 현재로선 기능없음.
+
+데이터소스: 
+    stomp:node-red혹은 Publisher와 연동해서 사용, Publisher 쓸때 굳이 쓸 필요 없음.
+            URL: 서버주소(http://xmonitor.qhweixun.com/elidom/stomp)
+            Subject: node-red의  Destination(/elidom/stomp/topic/hatiolab-hq/smart/SCENE-282)
+    mqtt: node-red와 연동해서 사용
+    firebase: 구글에서 제공하는 클라우드 데이터베이스 같은 기능임.
+    restful: 일반적인 http와 같음, 화면에서 URL을 지정하고 해당 URL로부터 데이터를 받아온다. node-red일수도 있고 Publisher일수도 있음. 
+
+
+
+애니메이션:
+    OutLine: target으로 지정된 컴포넌트의 궤도를 타고 움직인다.
+    Waiting Time: 설정한 시간 만큼 지연 후 애니메이션이 작동한다. 1000=1초
+    Retention: 설정한 시간만큼 작동 후 컴포넌트가 사라짐.
+    Duration: 지속시간
+    Repeat: 무한반복
+    Theta: 속도
+    Heartbeat-->scale: 설정한 배수크기 만큼 커짐
+
+    info window: 마우스 호버 또는 마우스 클릭 이벤트 시 info window컴포넌트 ID를 입력하면 해당 info window가 나타난다.
+    clone: 어떤 상대를 일정한주기 간격으로 계속 복사할때 사용. duration은 반복 주기, 설정한 시간마다 한번씩 복사한다.
+            targetRetention은 타겟이 얼마정도 있다가 사라질건지, 보통 복사대상의 retention시간하고 같게 설정해준다.
+            clone사용 시 복사 대상컴포넌트의 ID외에 template prefix도 지정해 주어야 한다.
+
+    
+
+mqtt: ID하고 Topic 같이야 함

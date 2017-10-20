@@ -1,44 +1,149 @@
-1. 讲解结构
-2. 
+第一天上午------------------------------------------------------------------------------------------------------------------------------------
+1. 讲解结构-->FMBplus_简介_CN.pdf.
+2. Server소개: 화면 접속, 화면에 접속한다. http://172.26.16.164:9080/fmb-server/login.jsp
+            1. User Group(Dev) 생성,  User Resource에서 맴버들보고 ID를 생성하게 한다.
+            2. Change Password 간단하게 소개.
+            3. Monitoring roles: 定义允许访问的看板. 
+            4. User Role: 생성된 유저에게 권한을 부여한다, 4가지가있음, Monitoring Role도 지정한다.
+            5. Board Senario: 모니터 화면에서의 Play Group을 여기서 만들수 있음, 모니터에서도 만들수 있음.
+            6. Navigation Manager: 디자인 화면-->Navigater에 작은 메뉴가 생김,  안씀.
+            7. Monitor Control: 모니터에 접속하면 정보들이 나타난다, 즉 모니터 정보용, 자세한건 문서 참고.
+            8. Monitoring Board: 디자인 완료된 보드들을 모니터를 켜지않고 웹으로 볼수 있음. 화면에서 쓰는 sql 정보 등등.
+            9. Equiments: EAP에서 직접 정보를 받을때 사용된다. 메뉴얼 참고.
+            10. Monitoring Data: 중요함, 자세하게 설명함.
+            11. Monitoring Data Group: 데이터들을 그룹별로 묶어 놓는다. 
+            12. Category Management: 그룹을 만들고 모니터링 데이터를 생성할때 그룹을 지정해줄수 있다. 데이터들을 분류해 관리한다. 
+            13. Table Schema..: 사용되는 테이블 및 테이블 상세내용들을 볼수 있다.
+            14. Performance Tuning: 이미 만들어진 데이터들의 상태를 보여준다. 
+            15. Board Matrix: 어떤보드에 어떤 데이터들이 쓰이고 있다 혹은 어떤데이터가 어떤 보드들에 쓰이고 있다는 정보.
+            16. File Manager: 디자인에서 사용되는 파일들을 관리함, 다운로드 받을수 있고. 업로드는 디자인에서 함.
+            17. Monitoring Errors: 작동중 생긴 에러들을 보여줌.
+            18. System: 시스템 설정들, 문서 참고.
+3. Designer: 디자인 접속: Host, Port, Factory, ID, PW를 입력하여 디자인에 접속한다. 본인 ID 입력.
+            1. 디자인 화면 구조소개: 左边导航区,上面控制区, 右边组件去, 下面属性区.  
+            2. 左边导航区: 자주쓰는것만 소개한다. Board, Parameters(나중에 실제예제에서 소개함), Monitoring Data는 아까 Server에서 만든 데이터들임. 
+                바로 화면 들어감. 맴버들을 Boards에 자신만의 폴더를 만들게 함. 각자 화면 하나씩 만듬.
+            3. 上面控制区: 어떻게 사용하는지를 소개한다. 옵션구역은 간단하게 소개.
+            4. 右边组件去: 간단하게 훓음, 각 탭들이 어떤 심볼들을 포함하고 있는지.
+                          Shape: 여러가지 도형들, Text, 
+                          Data: Server에서 만들 데이터들을 설정할수 있다. 
+                          Tools: Action, Timer, Embed, 등등.
+                          MultiMedia: 이미지, MP3, 파일등 심볼들.
+                          Dashboard: Label, Chart, Table 등등. 
+                          Guages: 仪表, 各种仪表, 状态条, 时钟等 
+                          Factory: 画工厂的时候使用, 管道, 流水线, 模拟人等.
+                          Form: 表单元素, 按钮, 下拉框等
+                          Navigator, Layout, Custom 不用.
 
+            5. 下面属性区:첫번째탭과 두번째 탭, 필터탭 사용, 두번째 탭은 오후에 데이터 매핑 시 사용법 알려줌. 
+                         FMBplus_DesignSymbol_CN.pdf를 켜놓고 심볼 소개를 시작한다.
+                         1. 원형 도형을 놓고 기본속성들을 설명함.
+                         2. 차트를 놓고 기본속성들을 설명함.
+                         3. 게이지를 놓고 기본속성들을 설명함. fill Color는 Plue 게이지 속성임.
+                         4. 디자인 할때 보통 구조부터 잡고 심볼들을 가져와서 화면을 디자인 한다.
+4. Monitor: 모니터 접속은 디자인 접속과 같음.
+            1. 모니터 메뉴바들 소개 간단하게, 보드가 안보이면 설정에 들어가서 public... 
+            2. 디자인된 보드를 어떻게 보는지 정도만 알면 됨.
+            3. 나머지들은 메뉴얼 참고.
 
+第一天下午------------------------------------------------------------------------------------------------------------------------------------
+1. 원형 색상 변하고, Label은 값이 변함: TEST01 사용, tag값만 주고 설정하면 됨.
+2. Flip, Pie차트 데이터 매핑: Flip에서 Leaf Color는 배경색, Text Color,  value presicion, value scale
+                             Flip은 데이터 매핑시 Value를 선택해준다.
+                             Pie는 DataXML를 선택, Pie차트에서 Value Color를 설정하면 채색이 된다. 
+3. Table: TEST02사용. ColumnHeager Height, col count, row count를 설정.
+          Data Columns: R1,R2,R3,R4,R5,R6
+4. Chart: Data Direction-->vetical,  Data Labels Column-->DATE1, Data Values Column-->R1
+          그리드를 두개 이상, 보여 주고싶을때: 바차트하나 라인차트 하나 더추가한다. 데이터들 R2,R3 매핑후, tag, name을 지정한다.
+          메인 차트의 Series Charts-->bar, line
+          보여주는 값의 차이가 많이 날때 maxValue를 지정해 주면 보기좋게 나온다.
+    게이지->value, Label->text-> 도형색갈->fillcolor, 데이터 복잡한건 DataXml
 
+5. Action 사용법: 시간되는데까지 함.
+                 1. 원, 삼각형, name을 해준다. Action을 네개, 버튼 하나. yuan, sanjiao
+                    action: name-->red, Target Effect-->fillColor(컴포넌트의 속성임), Target Values-->CE0000, Target-->yuan 
+                    action: name-->blue, Target Effect-->fillColor(컴포넌트의 속성임), Target Values-->000079, Target-->yuan
+                    action: name-->hidden, Target Effect-->visible(컴포넌트의 속성임), Target Values-->false, Target-->sanjiao
+                    action: name-->show, Target Effect-->visible(컴포넌트의 속성임), Target Values-->true, Target-->sanjiao
+                    button: Toggle-->true, Toggle State-->on, Off Actions(첨 클릭할때)-->hidden,red, On Actions-->show,blue
+                2. Copy Action: Label 두개, copy Action 하나, 버튼 하나.
+                    라벨들 name지정 label1, label2
+                    copy action: Source-->label1, Source Effect-->text, Target-->label2, name-->copy
+                    Button: Actions-->copy
+                3. Mp3, 버튼하나, action 두개 play, stop
+                    Mp3: Sound URL: 음악선택, name--> mp3, 파일 올리는거 설명 안했으면 여기서 설명.
+                    action: Target Effect-->playStatus, Target Values-->play, Targets-->mp3, name-->play
+                    action: Target Effect-->playStatus, Target Values-->stop, Targets-->mp3, name-->stop
+                    button: Toggle-->true, Toggle State-->on, Off Actions(첨 클릭할때)-->play, On Actions-->stop
+                4. Timer사용: 네모도형 하나, Timer, action 두개.
+                    네모: name-->box 
+                    action: name-->red, Target Effect-->fillColor(컴포넌트의 속성임), Target Values-->CE0000, Target-->box 
+                    action: name-->blue, Target Effect-->fillColor(컴포넌트의 속성임), Target Values-->000079, Target-->box
+                    timer: active-->true, name-->timer, Actions-->red,blue, Run Method-->sequential
 
+第二天上午------------------------------------------------------------------------------------------------------------------------------------
+1. 시계는 마지막걸 주로 마니씀 Value Type-->format, Format Text--> 속성에서 바꿔준다. 년월일 다 표현하려 할때 컴포넌트 두개로 표현
+    나머지 시계들은 Local Time-->true, Time Zone-->China 로 선택하면 현재 시각이 나옴.
+2. Label 컴포넌트의 marquee 
+3. embed: Board Name-->보여주고 싶은 보드 네임, border scale mdoe-->fit
+    multi embed: border scale mdoe-->fit, Embed senario-->Embed senario를 하나 만든다. 만들때 轮播되는 시간간격을 설정해 준다.
+4. Factory 컴포넌트 간단하게 소개
+    传输带: Direction-->방향, Effect Direction-->흐름 방향, Unit fill color-->传输带颜色, Unit size-->간격
+5. Equiments: 설비 상태 보여주는 화면, DataSource하나, Label 두개, 네모 컴포넌트 하나, swf하나.
+              먼저 데타소스컴포넌트 클릭 후 하나하나 클릭하여 오른쪽 마우스-->Pack Symbols as Parents-children.
+              1. 두 Label의 tag를 각각 RES_ID, RES_DESC로 설정.
+              2. 네모 컴포넌트의 name, tag-->alarm
+              3. swf 파일 name, tag-->alarm2 
+              4. DataSource 하나-->EQ_MONITOR, Default Row-->TAP-01(데이터들 중에 어느 row를 보여주겠는가 하는 Key), 
+                                                Index Column-->RES_ID(Default Row에 보여지는것은 Index Column의 값임), 
+                                                Mapping scope-->children, 
+                                                visible-->true,
+              5. Navigater에서 Parameters-->New Parameters를 생성한다.
+                Inpurt Param(SQL의 필드)-->RES_ID, Target Item(컴포넌트 ID)--RES_ID, Effect-->Text, Value-->INPUT_VALUE
+                Inpurt Param-->RES_DESC, Target Item--RES_DESC, Effect-->Text, Value-->INPUT_VALUE
+                Inpurt Param-->STATUS, OP-->==, Value--> WAIT, Target Item--alarm, Effect-->fillColor, Value-->#FF6600
+                Inpurt Param-->STATUS, OP-->==, Value--> RUN, Target Item--alarm, Effect-->fillColor, Value-->#00FF00
+                Inpurt Param-->STATUS, OP-->==, Value--> ALARM, Target Item--alarm, Effect-->fillColor, Value-->#FF0000
+                Inpurt Param-->STATUS, OP-->==, Value--> STOP, Target Item--alarm, Effect-->fillColor, Value-->#666666
+                Inpurt Param-->STATUS, OP-->==, Value--> ALARM, Target Item--alarm2, Effect-->visible, true
+                Inpurt Param-->STATUS, OP-->!=, Value--> ALARM, Target Item--alarm2, Effect-->visible, false
+              6. RUN Time탭에서 Parameters Template를 설정한 것으로 지정해 준다.
 
-
-
-
-
-
-
-
-Combo_Table----------------------------
-
-Combobox:
-    Name, Tag, Data Labels Column, Data Value Column, Value Change Actions
+6. Popup_Table----------------------------
 Table:
-    Name, Tag
-Action_Copy:
-    Name, Source, Source Effect, Target Effect, Targets
-Action_Refresh:
-    Name, Target Effect, Targets
+    Name, Tag-->table, Select Change Action-->form,pop    columnHeders-->LINE_ID,PROD_ID,PLAN,PERFORMANCE,RATE    colcount-->5
+Action_form:
+    Name-->form
+    Form Effect-->selectedRow[0],selectedRow[1],selectedRow[2]
+    Form Items-->table,table,table
+    Form Labels-->LINE_ID,PROD_ID,PLAN
+    Target Effect-->popupParams
+    Targets-->pop
+Action_popup:
+    Name-->pop
+    Popup Board-->pop 이름
+DataSource:-->table_pop(테이블 데이터)
+
+Popup 화면-->생성시 popup을선택하고 길이*너비=400, Label 3개, name-->t1,t2,t3
+            Init Parameters: Name-->LINE_ID, target-->t1, Effect-->Text, Value-->INPUT_VALUE
+                             Name-->PROD_ID, target-->t2, Effect-->Text, Value-->INPUT_VALUE
+                             Name-->PLAN, target-->t3, Effect-->Text, Value-->INPUT_VALUE
+                             Name-->LINE_ID, target-->MON, Effect-->DataParam[LINE_ID], Value-->INPUT_VALUE (밑에 테이블 데이터 소스에 들어감, 필요시 참고)
+             
+7. Combo_Table----------------------------
 DataSource_Combobox:
     绑定Combobox
 DataSource_Table:
-    Name, 绑定数据源(数据源是条件查询)
-
-Popup_Table----------------------------
-
+    Name-->data1, 绑定数据源(数据源是条件查询)
+Combobox:
+    Name, Tag-->combo, Data Labels Column-->LINE_ID, Data Value Column-->LINE_ID, Value Change Actions-->copy,refresh
 Table:
-    Name, Tag, Select Change Action
-Action_form:
-    Name, Form Effect, Form Items, Form Labels,Target Effect, Targets
-Action_popup:
-    Name, Popup Board
-DataSource:
-    绑定Combobox
-Popup-->Init Parameters:参考示例界面
+    Name, Tag-->table
+Action_Copy:
+    Name-->copy, Source-->combo, Source Effect-->value, Target Effect-->dataParam[LINE_ID], Targets-->data1
+Action_Refresh:
+    Name-->refresh, Target Effect-->refresh, Targets-->data1
 
 
-http://172.26.16.164:9080/fmb-server/login.jsp
 
+数据源的 polling interval 实现按指定的时间刷新数据源. polling-->true, polling cache-->true

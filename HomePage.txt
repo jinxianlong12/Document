@@ -13,4 +13,6 @@ http://www.qhweixun.com:8090/wxvips/login.aspx
 ID: admin
 PW: wxadmins
 -----------------------------------------------------------
-new-web에서 소스 수정하고 커밋하고  html-new에서 업데이트 한다. 
+D:\Long\new_web\www\templates\default 폴더에서 visual code를 열고 소스 수정하고 커밋
+서버에 접속하여 D: html-new에서 업데이트 한다. 
+
