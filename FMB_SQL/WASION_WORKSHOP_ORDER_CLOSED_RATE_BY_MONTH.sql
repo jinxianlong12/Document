@@ -1,0 +1,26 @@
+SELECT WORKSHOP,WORKSHOP_DESC, MONTH,SUM (PLAN_COUNT) AS PLAN_COUNT, SEQ, 
+         SUM (REAL_COUNT)  AS REAL_COUNT, 
+         100 * ROUND (SUM (REAL_COUNT) / SUM (PLAN_COUNT), 4)  AS CLOSED_RATE 
+    FROM (SELECT ORD.FACTORY,ORD.WORKSHOP,SHOP.DATA_1 AS WORKSHOP_DESC,MONTH, 
+                 ORD.PLAN_COUNT, REAL_COUNT, SEQ, 
+                 100 * ROUND (REAL_COUNT / PLAN_COUNT, 4) AS CLOSED_RATE 
+            FROM (  SELECT FACTORY, MAT_ID, CMF_34 AS WORKSHOP, 
+                           SUBSTR(PLAN_END_TIME,1,6) AS MONTH, 
+                           COUNT (ORDER_STATUS_FLAG) AS PLAN_COUNT, 
+                           SUM (DECODE (ORDER_STATUS_FLAG, 'C', 1, 0)) AS REAL_COUNT, 
+                           DECODE (CMF_34,  'DZ01', 1,  'DX01', 2,  'SX01', 3,  'ZD01', 4,  'SQ01', 5) AS SEQ 
+                      FROM CWIPORDORG ORG 
+                     WHERE     ORG.FACTORY = 'WASION' 
+                       AND PLAN_END_TIME > '20170501'                            
+                  GROUP BY FACTORY, MAT_ID, CMF_34,SUBSTR(PLAN_END_TIME,1,6)) ORD, 
+                 MWIPMATDEF MAT, 
+                 MGCMTBLDAT SHOP 
+           WHERE     ORD.FACTORY = MAT.FACTORY 
+                 AND ORD.MAT_ID = MAT.MAT_ID 
+                 AND ORD.FACTORY = SHOP.FACTORY 
+                 AND ORD.WORKSHOP = SHOP.KEY_1 
+                 AND MAT.MAT_VER = 1 
+                 AND SHOP.TABLE_NAME = 'WORKSHOP') 
+WHERE WORKSHOP=:WORKSHOP 
+GROUP BY WORKSHOP,WORKSHOP_DESC,MONTH, SEQ 
+ORDER BY WORKSHOP,WORKSHOP_DESC,SEQ,MONTH

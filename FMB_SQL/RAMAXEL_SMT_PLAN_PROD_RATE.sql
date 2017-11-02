@@ -1,0 +1,20 @@
+	select T_MONTH,LINE_ID,LINE_DESC,SUM(PLAN_QTY) PLAN_QTY,SUM(PROD_QTY) PROD_QTY,SUM(RATE) RATE,SUM(AVG_QTY) AVG_QTY from(   
+  select to_char(sysdate, 'YYYYMM') T_MONTH, KEY_1 LINE_ID,DATA_1 LINE_DESC,0 PLAN_QTY,0 PROD_QTY,0 RATE,0 AVG_QTY    
+  from MGCMTBLDAT WHERE TABLE_NAME='SUB_AREA' AND FACTORY = 'RCM1'   
+  union all   
+ SELECT SUBSTR(M.ORD_START_TIME,0,6) AS T_MONTH,   
+           M.LINE_ID LINE_ID,   
+           GCM.DATA_1 AS LINE_DESC,   
+           SUM(P.ORD_QTY)          AS PLAN_QTY,   
+           SUM(M.PAK_OUT_QTY)       AS PROD_QTY,   
+           ROUND( SUM(M.PAK_OUT_QTY)/decode(SUM(P.ORD_QTY),0,1,SUM(P.ORD_QTY)),4 )*100 AS RATE,   
+           ROUND(SUM(M.PAK_OUT_QTY)/to_number(to_char(sysdate, 'dd')),0) AS AVG_QTY   
+         FROM CWIPORDSTS M, MGCMTBLDAT GCM  ,cwipordpln P 
+         WHERE SUBSTR(M.ORD_START_TIME,0,6) = TO_CHAR(sysdate,'yyyymm')   
+         AND M.FACTORY = GCM.FACTORY    
+         AND GCM.TABLE_NAME = 'SUB_AREA'   
+         AND M.LINE_ID = GCM.KEY_1    
+         AND M.ORDER_ID =  P.ORDER_ID(+)    
+         GROUP BY SUBSTR(M.ORD_START_TIME,0,6),M.LINE_ID ,GCM.DATA_1)   
+  GROUP BY T_MONTH,LINE_ID,LINE_DESC   
+  Order by LINE_ID
