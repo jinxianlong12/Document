@@ -64,13 +64,13 @@ eval-function
 4.person, forklift-3D용 사람과 지게차.
 5.beacon과humidity sensor는 현재로선 기능없음.
 
-데이터소스: 
+데이터소스:
     stomp:node-red혹은 Publisher와 연동해서 사용, Publisher 쓸때 굳이 쓸 필요 없음.
             URL: 서버주소(http://xmonitor.qhweixun.com/elidom/stomp)
             Subject: node-red의  Destination(/elidom/stomp/topic/hatiolab-hq/smart/SCENE-282)
     mqtt: node-red와 연동해서 사용
     firebase: 구글에서 제공하는 클라우드 데이터베이스 같은 기능임.
-    restful: 일반적인 http와 같음, 화면에서 URL을 지정하고 해당 URL로부터 데이터를 받아온다. node-red일수도 있고 Publisher일수도 있음. 
+    restful: 일반적인 http와 같음, 화면에서 URL을 지정하고 해당 URL로부터 데이터를 받아온다. node-red일수도 있고 Publisher일수도 있음.
 
 
 
@@ -88,6 +88,38 @@ eval-function
             targetRetention은 타겟이 얼마정도 있다가 사라질건지, 보통 복사대상의 retention시간하고 같게 설정해준다.
             clone사용 시 복사 대상컴포넌트의 ID외에 template prefix도 지정해 주어야 한다.
 
-    
+
 
 mqtt: ID하고 Topic 같이야 함
+
+target-->(key)로 설정하면 ID값이 key와 같은 컴포넌트들을 찾아가서 값을 매핑해준다.
+
+
+Mqtt:
+    Broker-->mq.hatiolab.com  RabbitMQ서버
+            http://mq.hatiolab.com:15672/#/
+            id: mps
+            pw: mps
+    Port-->15675
+    Path-->/ws
+    User-->hatiolab
+    Password-->hatiolab
+    Topic-->movement    publisher의 key 개념. Stomp의 Subject와 같음.
+    Qos-->0
+    Client ID-->ABC    유니크 한 이름을 갖는다는 뜻.
+    Data Format-->JSON
+    Retain-->
+
+Stomp:
+    URL-->http://mq.hatiolab.com:15674/stomp
+    Subject-->movement
+    Login-->hatiolab
+    passcode-->hatiolab
+    Data Format-->JSON
+    Label Debug-->체크하면 F12하면 로그가 찍힌다.
+
+
+eval-->this, parent, value,등 주로 사용, javascript 언어임
+ctrl+enter  script입력시 전체화면
+ctrl+shift+e-->json파일 export
+shift+del-->초기데이터 삭제

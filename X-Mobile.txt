@@ -5,15 +5,18 @@
 4. 소스 폴더밑에서(www폴더와 platforms) cordova platform add android를 실행한다.
 5. cordova run android
 
+
+bundle exec jekyll server
+
 서버--------------------------------------
-1. 깃헙에서 X-MES 서버 소스 내려받는다. 
+1. 깃헙에서 X-MES 서버 소스 내려받는다.
 2. Eclipse에서 import한다.
 3. DB파일 돌리고 mobile 메뉴 sql을 돌린다.
 4. 로그인 화면 setting에서 Base URL-->http://localhost:9020/rest, Web Socket URL-->http://localhost:9020/elidom/stomp
 
 
 
-Polymer 2: 
+Polymer 2:
 PRPL: lazy-import
 es6: class    http://es6-features.org/#Constants *
 behavior -> mixin *
