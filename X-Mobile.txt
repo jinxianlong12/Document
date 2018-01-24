@@ -1,12 +1,24 @@
 클라이언트---------------------------------
 1. 깃헙에서 소스 내려받는다.
 2. 소스 폴더밑에서 npm install, bower install
+npm install -g polymer-cli
 3. $ npm install -g cordova, 코도바 홈페이지-->http://cordova.axuer.com/
-4. 소스 폴더밑에서(www폴더와 platforms) cordova platform add android를 실행한다.
+4. 소스 폴더밑에서(www폴더와 platforms) www없으면 폴더를 새로 만들어준다. cordova platform add android를 실행한다.
 5. cordova run android
 
+apk 파일--------------------
+npm run rebuild
+cordova build android
 
 bundle exec jekyll server
+
+안드로이드 설치후
+Build Project:
+npm run rebuild:debug
+npm run rebuild
+
+数据线连接后开启USB调试
+发布到安卓设备上--> npm run start:android
 
 서버--------------------------------------
 1. 깃헙에서 X-MES 서버 소스 내려받는다.
@@ -14,11 +26,26 @@ bundle exec jekyll server
 3. DB파일 돌리고 mobile 메뉴 sql을 돌린다.
 4. 로그인 화면 setting에서 Base URL-->http://localhost:9020/rest, Web Socket URL-->http://localhost:9020/elidom/stomp
 
-
-
 Polymer 2:
 PRPL: lazy-import
 es6: class    http://es6-features.org/#Constants *
 behavior -> mixin *
 polymer tool: polymer cli
 cordova: phone, sms, email, camera, barcode, photos
+
+X-Mobile-----------------------------
+trans-lot-header.html  로직설명
+</iron-localstorage>
+</things-nfc-reader>
+</paper-toast>
+</things-entity-data>
+</paper-material>
+</things-list>
+
+Things 새 컴포넌트들의 자주 쓰는 속성
+모바일 Things-Framework이 아닌 다른 서버하구 연동 하려면.
+안드로이드 설치, apk파일 export 등.
+바코드 스캔 기능
+사진 찍어 올리는 기능
+스타일 어디서 입히는지 주로
+설비 기능 추가개발 의논.

@@ -1,34 +1,15 @@
 X-MES Publisher--------------------------------
 restful url: {{factory_url}}/rest/publishers/initData?subject={{SCENE_ID}}
-   http://xmes.qhweixun.com/rest/publishers/initData?subject=/elidom/stomp/topic/hatiolab-hq/smart/SCENE-1
+   http://xmonitor.qhweixun.com/rest/publishers/SCENE-559/init_data
+******restful사용법은 562화면 참고, 한화면에서 selectbox하나로 여러개 컴포넌트 값을 변경할때 참고(form 액션을 restful처럼 사용)
+******한 scene에 여러개 데이터 소스가 있으면 액션 하나로 한번에 다 가져온다.
+******클릭 시 팝업 보여주는기능은 ramaxel eq화면 참고, eqId를 화면에서 코딩으로 넘긴후 팝업화면에서 받아서 화면 로딩시 서버에 요청 보내는 형식이다.
+******비쥬얼라이저의 예제는 Len에 있음.
 Path: /elidom/stomp/topic/hatiolab-hq/smart/{{SCENE-NAME}}
-명칭: 디자인 화면 이름과 같게 한다. Publisher가 여러개 필요할경우 약간씩 차이를 주고 경로는 동일하게 해야한다.
-서비스 로직:
-리턴타입-->>> single variable인 경우에 변수값을 지정해 주지 않아도 sql이름값과 컴포넌트 ID값이 같으면 매핑된다.
-              나머지 경우엔 변수값을 지정해 주어야 보드 화면에서 변수값과 같은 ID에 데이터가 채워지게 된다.
-key-value Array--차트, 테이블용
-key-value object--포맷키, 포맷값 입력, 튜토리얼 참고.
-key-object object--포맷키입력
-single variable--하나의 데이터 용.
-custom--미 개발.
-
-scene 가져오기: Mes-->라벨-->Scene 화면에서 가져오기 버튼 클릭. 주소창에 ***/rest/scenes/168, ***은 서버,
-http://hatiolab.pointhing.xyz/rest/scenes/168
+scene 가져오기: http://hatiolab.pointhing.xyz/rest/scenes/168
 비디오의 url: ws://192.168.0.3 (WS Video URL)
 mes화면의 라벨-->scene화면은 보여주기만 하는 화면이다. 이미지들은 시스템 설정에 file.context.path 설정한 경로에서 불러온다.
 
-디자인 화면 속성창-------------------------------
-Series:
-Data key-서버로 부터 받은 데이터셋에서 해당 키값의 데이터를 가져온다.
-기타속성들은 메뉴얼 참고.
-보여줄 라인 혹은 바가 여러개이면 탭을 추가.
-X Axes:
-Data Key-x축에 보여질 키값을 선택.
-테이블: dataKey-->db필드, dataIndex-->매핑할 순서, 0부터 시작.
-Mapping:
-말그래로 매핑시켜줄 컴포넌트를 지정한다.
-accessor->오브젝트 혹은 Array경우 내부값에 접근 시 [0]혹은 ['value']로 접근가능.
-target->값을 넣어줄 컴포넌트 ID
 
 属性---------------------------->
 text--글씨
@@ -43,13 +24,6 @@ data--Array 혹은 Object
 value--단일 값
 started--:데이터 값을 받아 애니메이션 시작시킬때 사용
 reference--global-ref 컴포넌트에서 reference 속성 바꿀때 사용.
-
-目标----------------------------->
-self--자기 자신을 타겟으로 하는거고
-parent--자기를 포함하고 있는 컴포넌트
-child--자기가 포함하고 있는 컴포넌트
-sibling--자신과 parent가 동일한 컴포넌트들
-container나group에서 사용
 
 规则类型---------------------------->
 Value-값
@@ -72,13 +46,11 @@ eval-function
     firebase: 구글에서 제공하는 클라우드 데이터베이스 같은 기능임.
     restful: 일반적인 http와 같음, 화면에서 URL을 지정하고 해당 URL로부터 데이터를 받아온다. node-red일수도 있고 Publisher일수도 있음.
 
-
-
 애니메이션:
     OutLine: target으로 지정된 컴포넌트의 궤도를 타고 움직인다.
     Waiting Time: 설정한 시간 만큼 지연 후 애니메이션이 작동한다. 1000=1초
     Retention: 설정한 시간만큼 작동 후 컴포넌트가 사라짐.
-    Duration: 지속시간
+    Duration: 지정한 퀘도를 한번 통과하는데 걸리는 시간
     Repeat: 무한반복
     Theta: 속도
     Heartbeat-->scale: 설정한 배수크기 만큼 커짐
@@ -87,8 +59,6 @@ eval-function
     clone: 어떤 상대를 일정한주기 간격으로 계속 복사할때 사용. duration은 반복 주기, 설정한 시간마다 한번씩 복사한다.
             targetRetention은 타겟이 얼마정도 있다가 사라질건지, 보통 복사대상의 retention시간하고 같게 설정해준다.
             clone사용 시 복사 대상컴포넌트의 ID외에 template prefix도 지정해 주어야 한다.
-
-
 
 mqtt: ID하고 Topic 같이야 함
 
@@ -118,8 +88,12 @@ Stomp:
     Data Format-->JSON
     Label Debug-->체크하면 F12하면 로그가 찍힌다.
 
+인티그레이터: 화면을 그린후 다른서버에서 가져다 연동하여 사용한다.
+폼 컨포넌트는 항상 위에 보인다.  일반 컴포넌트하고 효과 등이 다를수 있다.
+값을 줄때 속성->value선택시 value는 대표속성 값으로 매핑된다.
+
 
 eval-->this, parent, value,등 주로 사용, javascript 언어임
 ctrl+enter  script입력시 전체화면
 ctrl+shift+e-->json파일 export
-shift+del-->초기데이터 삭제
+ctrl+del-->초기데이터 삭제
