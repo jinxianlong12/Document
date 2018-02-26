@@ -14,8 +14,9 @@ bundle exec jekyll server
 
 안드로이드 설치후
 Build Project:
-npm run rebuild:debug
-npm run rebuild
+npm run rebuild:debug(debug필요없을때 npm run rebuild)
+npm run start:android(/platforms/android/build/outputs/apk폴더에 apk파일이 만들어 진다)
+
 
 数据线连接后开启USB调试
 发布到安卓设备上--> npm run start:android

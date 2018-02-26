@@ -52,7 +52,7 @@ eval-function
     Retention: 설정한 시간만큼 작동 후 컴포넌트가 사라짐.
     Duration: 지정한 퀘도를 한번 통과하는데 걸리는 시간
     Repeat: 무한반복
-    Theta: 속도
+    Theta: 각도
     Heartbeat-->scale: 설정한 배수크기 만큼 커짐
 
     info window: 마우스 호버 또는 마우스 클릭 이벤트 시 info window컴포넌트 ID를 입력하면 해당 info window가 나타난다.
