@@ -19,3 +19,9 @@ D:\Long\new_web\www\templates\default 폴더에서 visual code를 열고 소스 
 
 관리자 페이지에서 이미지를 업로드 하면 서버 wx_web\www\upload 폴더에 들어간다, 폴더를 복사하여 html-new\www\upload폴더밑에 넣는다.
 즉 선택은wx_web\www\upload에서 하는데 경로는 html-new\www\upload폴더를 바라본다.
+
+阿里云地址: https://account.aliyun.com
+          yuxiangzheng@qhweixun.com
+          qhweixun2015
+
+https://fontawesome.com/how-to-use/svg-with-js 작은 이미지들

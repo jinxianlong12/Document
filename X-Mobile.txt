@@ -1,25 +1,21 @@
 클라이언트---------------------------------
 1. 깃헙에서 소스 내려받는다.
 2. 소스 폴더밑에서 npm install, bower install
-npm install -g polymer-cli
-3. $ npm install -g cordova, 코도바 홈페이지-->http://cordova.axuer.com/
+  npm install -g polymer-cli
+3. npm install -g cordova, 코도바 홈페이지-->http://cordova.axuer.com/
 4. 소스 폴더밑에서(www폴더와 platforms) www없으면 폴더를 새로 만들어준다. cordova platform add android를 실행한다.
-5. cordova run android
 
-apk 파일--------------------
-npm run rebuild
-cordova build android
+package.jason에 설정되어 있는 명령어
+경로설정 windows mac시스템에 맞춰서 예:
+  "copy:debug": "copy D:\\Long\\GitHub\\things-mobile\\app\\* D:\\Long\\GitHub\\things-mobile\\www",
+                mac OS: "cp -a build/build/app/* www"
+npm run rebuild:debug(debug필요없을때 npm run rebuild)
+数据线连接后开启USB调试
+npm run start:android(/platforms/android/build/outputs/apk폴더에 apk파일이 만들어 진다)
+发布到安卓设备上--> npm run start:android
 
 bundle exec jekyll server
-
-안드로이드 설치후
-Build Project:
-npm run rebuild:debug(debug필요없을때 npm run rebuild)
-npm run start:android(/platforms/android/build/outputs/apk폴더에 apk파일이 만들어 진다)
-
-
-数据线连接后开启USB调试
-发布到安卓设备上--> npm run start:android
+cordova run android
 
 서버--------------------------------------
 1. 깃헙에서 X-MES 서버 소스 내려받는다.

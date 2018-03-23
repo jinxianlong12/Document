@@ -1,0 +1,6 @@
+1. Nginx설치, Redis설치, Postgres설, JDK1.8설
+2. nginx설정변경 후 재시작, 파일 경로들을 맞게 설정, client 두개, storages설정
+    nginx가 부팅 안될때 log파일, 대부분 포트가 쓰고 있기에 생기는 문제임, 포트 변경하거나 해당 프로세스 종료후 시작.
+    nginx 실행중 설정파일 바꿧으면 재부팅.
+3. application-production.propertis파일 변경, 데이터 베이스 등.
+4. server-start.bat파일을 열어서 경로변경.
