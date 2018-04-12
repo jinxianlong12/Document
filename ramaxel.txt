@@ -2,6 +2,7 @@
  
 用户名：.\appadmin
 密码：Pwd4admin
+
  
 MESAPPSVR01.ramaxel.local	172.26.16.162	MES 应用服务器1
 MESAPPSVR02.ramaxel.local	172.26.16.163	MES 应用服务器2
