@@ -1,6 +1,0 @@
-1. https://github.com/에서 new repository버튼을 클릭하여 프로젝트를 만든다.
-2. 프로젝트를 클릭하여 들어가서 clone or download를 클릭하여 GitHub DeskTop으로 프로젝트를 컴퓨터에 내려받는다.
-3. 폴더를 오른쪽 마우스로 클릭하고 VS Code 편집기로 오픈한다.
-4. 편집기에서 폴더 등을 생성하고 커밋하면 프로젝트가 만들어진다. 
-5. README.md파일이 입구이며 폴더마다 index.md파일을 생성하고 markdown형식으로 파일들을 편집한다.
-6. 
