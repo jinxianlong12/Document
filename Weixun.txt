@@ -1,14 +1,20 @@
+웨이쉰 이메일----->
 weixun@szweixun.com
 Qhwx2018
 
-홀리시스-----
+홀리시스----->
 699 860 994
 hollysys
 
-아리윈 서버-----
+아리윈 서버----->
 root
 Qhweixun2015
 
-아리윈 控制台
+아리윈 控制台----->
 yuxiangzheng@qhweixun.com
 qhweixun2015
+
+guide page----->
+1. 깃헙에 소스를 업로드
+2. setting에서 깃헙페이지 주소를 확인.
+3. 아리윈에서 실제 사용 url과 깃헙 주소를 매핑.
