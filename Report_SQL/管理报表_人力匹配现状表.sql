@@ -1,0 +1,107 @@
+WITH
+T1 AS
+(
+    SELECT WORK_DATE,AREA,MANAGER, SUM(STA_LAB)STA_LAB FROM
+    (
+           SELECT A.WORK_DATE ,A.AREA,A.WORK_SHOP,A.MAT_ID,A.QTY,A.HOURS,B.STA_TIME, C.MANAGER, C.RATE ,CEIL (A.QTY * B.STA_TIME * C.RATE /100/3600/A.HOURS)STA_LAB FROM
+            (
+               SELECT PLN.WORK_DATE ,
+                DECODE(PLN.ORD_CMF_2,'DG_SDT','DG-SDT','DG_SSD','DG-SSD','HY','HY-MEM') AREA,
+                PLN.ORD_CMF_1 WORK_SHOP,PLN.MAT_ID ,SUM(PLN.PLAN_ORD_QTY) QTY,
+                 CASE PLN.ORD_CMF_1
+                WHEN 'PAK' THEN '11'
+                WHEN 'SMT' THEN ''||CEIL((TO_DATE(DECODE(MAX(PLN.END_TIME),' ', TO_CHAR(SYSDATE,'YYYYMMDDHH24MISS'),MAX(PLN.END_TIME)), 'YYYYMMDDHH24MISS') - TO_DATE(MIN(PLN.START_TIME), 'YYYYMMDDHH24MISS')) *24 )
+                ELSE '0' END HOURS
+                 FROM CWIPORDPLN PLN WHERE 1=1
+                 AND PLN.FACTORY ='RCM1'
+                 AND PLN.DELETE_FLAG !='Y'
+                 AND PLN.ORD_CMF_2 IN( 'DG_SDT' ,'DG_SSD' ,'HY')
+                 AND PLN.ORD_CMF_1 IN('SMT','PAK')
+                 AND PLN.WORK_DATE >= '20180624'
+                 AND PLN.WORK_DATE <= '20180628'
+                GROUP BY PLN.WORK_DATE, PLN.ORD_CMF_2 ,PLN.ORD_CMF_1,PLN.MAT_ID,PLN.MAT_ID ORDER BY WORK_DATE,AREA ,WORK_SHOP,MAT_ID
+            )A,
+            (
+                SELECT WORK_DATE,AREA,WORK_SHOP,MAT_ID,SUM(STA_TIME)STA_TIME FROM (
+                    SELECT PLN.WORK_DATE,DECODE(PLN.ORD_CMF_2,'DG_SDT','DG-SDT','DG_SSD','DG-SSD','HY','HY-MEM') AREA,
+                    'SMT' WORK_SHOP, PLN.MAT_ID, GCM.DATA_2 OPER,MAX(GCM.DATA_6)STA_TIME FROM
+                    MGCMTBLDAT GCM , CWIPORDPLN PLN
+                    WHERE 1=1
+                    AND GCM.FACTORY = 'RCM1'
+                    AND PLN.FACTORY = 'RCM1'
+                    AND GCM.TABLE_NAME = 'C_LABOR_OPER'
+                    AND GCM.KEY_2 = PLN.MAT_ID
+                    AND GCM.DATA_2 = '120070'
+                    AND PLN.DELETE_FLAG !='Y'
+                    AND PLN.ORD_CMF_2 IN( 'DG_SDT' ,'HY','DG_SSD')
+                    AND PLN.ORD_CMF_1 = 'SMT'
+                    AND PLN.WORK_DATE >= '20180624'
+                    AND PLN.WORK_DATE <= '20180628'
+                    GROUP BY PLN.WORK_DATE ,PLN.ORD_CMF_2 ,PLN.MAT_ID ,GCM.DATA_2,PLN.MAT_ID
+                )GROUP BY WORK_DATE, AREA,WORK_SHOP,MAT_ID
+                UNION ALL
+                SELECT WORK_DATE,AREA,WORK_SHOP,MAT_ID,SUM(STA_TIME)STA_TIME FROM (
+                    SELECT PLN.WORK_DATE,DECODE(PLN.ORD_CMF_2,'DG_SDT','DG-SDT','DG_SSD','DG-SSD','HY','HY-MEM') AREA,
+                    'PAK' WORK_SHOP, PLN.MAT_ID, GCM.DATA_2 OPER,MAX(GCM.DATA_6)STA_TIME
+                    FROM
+                    MGCMTBLDAT GCM , CWIPORDPLN PLN
+                    WHERE 1=1
+                    AND GCM.FACTORY = 'RCM1'
+                    AND PLN.FACTORY = 'RCM1'
+                    AND GCM.TABLE_NAME = 'C_LABOR_OPER'
+                    AND GCM.KEY_2 = PLN.MAT_ID
+                    AND GCM.DATA_2 != '120070'
+                    AND PLN.DELETE_FLAG !='Y'
+                    AND PLN.ORD_CMF_2 IN( 'DG_SDT' ,'HY','DG_SSD')
+                    AND PLN.ORD_CMF_1 = 'PAK'
+                    AND PLN.WORK_DATE >= '20180624'
+                    AND PLN.WORK_DATE <= '20180628'
+                    GROUP BY PLN.WORK_DATE ,PLN.ORD_CMF_2 ,PLN.MAT_ID ,GCM.DATA_2
+                )GROUP BY WORK_DATE, AREA,WORK_SHOP,MAT_ID
+            )B,
+            (
+             SELECT KEY_1 AREA, KEY_2 WORK_SHOP, TO_NUMBER(DATA_1) RATE,DATA_2 MANAGER FROM MGCMTBLDAT WHERE FACTORY = 'RCM1' AND TABLE_NAME ='AREA_LABOUR'
+            )C
+            WHERE 1=1
+            AND A.WORK_DATE = B.WORK_DATE
+            AND A.AREA = B.AREA
+            AND A.WORK_SHOP = B.WORK_SHOP
+            AND A.MAT_ID = B.MAT_ID
+            AND A.AREA = C.AREA
+            AND A.WORK_SHOP = C.WORK_SHOP
+    )
+    GROUP BY WORK_DATE ,AREA,MANAGER
+),
+T2 AS
+(
+     SELECT WORK_DATE,AREA ,SUM(1) ACT_LAB  FROM
+    (
+      SELECT SUBSTR(C.ON_TIME,0,8) WORK_DATE, C.AREA ,USER_ID
+      FROM CSECUSRONO C
+      WHERE
+      C.FACTORY =  'RCM1' AND AREA IN('DG-SDT','DG-SSD')
+      AND ON_TIME            >= '20180624'||'0800'
+      AND ON_TIME            <= '20180628'||'0800'
+      AND OPER NOT IN ('160010','030000','040000')
+      AND STATUS = 'OFF'
+      GROUP BY  SUBSTR(C.ON_TIME,0,8) ,  C.AREA ,USER_ID ORDER BY WORK_DATE,AREA
+    ) GROUP BY WORK_DATE, AREA
+     UNION
+    SELECT WORK_DATE,AREA ,SUM(1) ACT_LABOR  FROM
+    (
+      SELECT SUBSTR(C.ON_TIME,0,8) WORK_DATE, C.AREA ,USER_ID
+      FROM CSECUSRONO C
+      WHERE
+      C.FACTORY =  'RCM1' AND AREA = 'HY-MEM'
+      AND ON_TIME            >= '20180624'||'0830'
+      AND ON_TIME            <= '20180628' ||'0830'
+      AND OPER NOT IN ('160010','030000','040000')
+      AND STATUS = 'OFF'
+      GROUP BY  SUBSTR(C.ON_TIME,0,8) ,  C.AREA ,USER_ID ORDER BY WORK_DATE,AREA
+    ) GROUP BY WORK_DATE,AREA
+)
+SELECT T1.WORK_DATE ,T1.AREA,T1.MANAGER,T1.STA_LAB,T2.ACT_LAB ,TRUNC((T1.STA_LAB/T2.ACT_LAB)*100,2) MATCH_LAB,(T1.STA_LAB - T2.ACT_LAB) DUTY_LAB FROM T1,T2
+WHERE 1=1
+ AND T1.WORK_DATE = T2.WORK_DATE(+)
+ AND T1.AREA = T2.AREA
+ AND T1.AREA = NVL(TRIM(' '),T1.AREA)
