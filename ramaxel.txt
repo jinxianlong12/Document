@@ -1,7 +1,7 @@
 以下是MES生产服务器信息：
  
 用户名：.\appadmin
-密码：Pwd4admin    673013584
+Pwd4admin    673013584
  
 MESAPPSVR01.ramaxel.local	172.26.16.162	MES 应用服务器1
 MESAPPSVR02.ramaxel.local	172.26.16.163	MES 应用服务器2

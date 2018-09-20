@@ -1,0 +1,187 @@
+{
+    "config": {
+        "groupBy": [
+            "order"
+        ],
+        "options": {
+            "footer": {
+                "visible": false
+            },
+            "groupPanel": {
+                "visible": false
+            },
+            "checkBar": false
+        },
+        "displayOptions": {
+            "rowHeight": 40,
+            "fitStyle": "evenFill"
+        },
+        "effectOptions": {
+            "animationEnabled": true
+        },
+        "editOptions": {
+            "editable": false
+        }
+    },
+    "model": [
+        {
+            "fieldName": "defect_type",
+            "dataType": "text"
+        },
+        {
+            "fieldName": "defect_type_desc",
+            "dataType": "text"
+        },
+        {
+            "fieldName": "defect_count",
+            "dataType": "number"
+        },
+        {
+            "fieldName": "all_count",
+            "dataType": "number"
+        },
+        {
+            "fieldName": "per_cent",
+            "dataType": "number"
+        }
+    ],
+    "columns": [
+        {
+            "name": "defect_type",
+            "fieldName": "defect_type",
+            "fillWidth": 1,
+            "editable": false,
+            "header": {
+                "text": "label.defect_type"
+            },
+            "mergeExpression": "value",
+            "valueType": "text"
+        },
+        {
+            "name": "defect_type_desc",
+            "fieldName": "defect_type_desc",
+            "fillWidth": 1,
+            "editable": false,
+            "header": {
+                "text": "label.defect_type_desc"
+            },
+            "dynamicStyles": {
+                "expression": "",
+                "styles": {
+                    "background": "#30000000"
+                }
+            },
+            "mergeExpression": "value",
+            "valueType": "text"
+        },
+        {
+            "name": "defect_count",
+            "fieldName": "defect_count",
+            "fillWidth": 1,
+            "editable": false,
+            "header": {
+                "text": "label.defect_count"
+            },
+            "styles": {
+                "textAlignment": "center"
+            }
+        },
+        {
+            "name": "all_count",
+            "fieldName": "all_count",
+            "fillWidth": 1,
+            "editable": false,
+            "header": {
+                "text": "label.all_count"
+            },
+            "styles": {
+                "textAlignment": "center"
+            }
+        },
+        {
+            "name": "per_cent",
+            "fieldName": "per_cent",
+            "fillWidth": 3,
+            "editable": false,
+            "header": {
+                "text": "label.per_cent"
+            },
+            "styles": {
+                "numberFormat": "0,000"
+            },
+            "editor": {
+                "type": "number"
+            },
+            "groupFooter": {
+                "expression": "avg",
+                "styles": {
+                    "suffix": " %",
+                    "numberFormat": "#,##0.00"
+                }
+            },
+            "dynamicStyles": [
+                {
+                    "expressions": [
+                        "value > 0"
+                    ],
+                    "styles": [
+                        {
+                            "shapeColor": "#a000aa00",
+                            "color": "#080"
+                        }
+                    ]
+                }
+            ],
+            "renderer": {
+                "type": "linearGauge",
+                "startValue": 0,
+                "endValue": 100,
+                "thickness": 5,
+                "valueThickness": 1,
+                "valueLocation": "top",
+                "ranges": [
+                    {
+                        "label": "1",
+                        "endValue": 25,
+                        "background": "#40000000"
+                    },
+                    {
+                        "label": "2",
+                        "startValue": 25,
+                        "endValue": 50,
+                        "background": "#30000000"
+                    },
+                    {
+                        "label": "3",
+                        "startValue": 50,
+                        "endValue": 75,
+                        "background": "#20000000"
+                    },
+                    {
+                        "label": "4",
+                        "startValue": 75,
+                        "endValue": 100,
+                        "background": "#10000000"
+                    }
+                ],
+                "scale": {
+                    "ticks": [
+                        0,
+                        25,
+                        50,
+                        75,
+                        100
+                    ],
+                    "tickLength": 0,
+                    "categoryStroke": null
+                }
+            },
+            "animations": [
+                {
+                    "property": "value",
+                    "duration": 1000
+                }
+            ]
+        }
+    ]
+}

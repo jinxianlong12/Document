@@ -1,9 +1,15 @@
 1. Nginx설치, Redis설치, Postgres설, JDK1.8설
 2. nginx설정변경 후 재시작, 파일 경로들을 맞게 설정, client 두개, storages설정
     nginx가 부팅 안될때 log파일, 대부분 포트가 쓰고 있기에 생기는 문제임, 포트 변경하거나 해당 프로세스 종료후 시작.
-    nginx 실행중 설정파일 바꿧으면 재부팅.
+    nginx 실행중 설정파일 바꿧으면 재부팅. 任务管理器-->结束进程 再重启
+    产品地址是nginx配置的地址
 3. application-production.propertis파일 변경, 데이터 베이스 등.
-4. server-start.bat파일을 열어서 경로변경.
+4. 설치한 폴더가 다른경우엔 server-start.bat파일을 열어서 경로변경.
+
+client.context.path
+file.context.path
+server.context.path   IP:관리자 페이지 포트(ip:8080)
+
 
 1. 스케줄러 스톱안하고 이름 바꿔서 에러가 생길 경우: 스케줄러 스톱->서버 내리고->qrtz로 시작된 테이블 데이터 삭제->서버 재실행->스케줄러 실행
 파일 교체하고 안될때 캐시 삭제 함.

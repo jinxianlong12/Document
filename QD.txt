@@ -1,10 +1,103 @@
-订单管理-->订单查看
-工单管理-->日计划查看
-批次查询: 状态-->
-交易-->操作代码
-生产参数: 测试集-->检查项目集
-批次确认-->现场确认
-用户대신 修成
-OI批次异常: 用户-异常报告者
-批次结束-->工序报工
-批次分解, 批次拆分
+1. UI-WO锁定/释放-----------------------------------
+  page: pln-work-order-hold-release
+  table: WORK_ORDERS
+  service: OrderHoldRelease.java
+
+2. UI-班组管理-----------------------------------
+  page: usr-shift-setup
+  table: SHIFT_USERS, 
+  service: ShiftUser.java, ShiftUserAddDelete.java
+
+3. UI-员工上岗用户添加到上岗Grid时, 重复添加问题
+  page: usr-user-logon
+  table: USER_ROLLING, USERS, OPERATIONS
+  service: UserOnLine.java, FindUserByOperId.java, FindRollingByOperId.java
+
+4. UI-员工下线-----------------------------------
+  page: usr-user-logoff
+  table: USER_ROLLING
+  service: UserOffLine.java
+
+5. UI-标签模板创建完成-----------------------------------
+  page: label-command-create
+  table: LABEL_COMMANDS
+  service: LabelCommandCreate.java
+
+6. OI-工序指导查询完成-----------------------------------
+  page: things-term-operation-guide
+  table: ATTACHMENTS, WORK_ORDERS, ROUTING_OPERS
+  service: ViewGuideList.java
+
+7. OI-物料批次创建-----------------------------------
+  page: raw-lot-creat
+  table: RAW_LOT, RAW_LOT_TRACES, LABEL_COMMANDS, LABEL_HISTORIES
+  service: RawLotCreate.java, LabelModelGet.java, PrintHistory.java
+  2. 打印测试
+
+8. OI-物料批次重新打印-----------------------------------
+  page: raw-label-print
+  table: RAW_LOT, RAW_LOT_TRACES, LABEL_COMMANDS, LABEL_HISTORIES
+  service: LabelModelGet.java, PrintHistory.java
+  
+9. OI-物料批次批量创建-----------------------------------
+  page: raw-lot-create-quantity
+  table: RAW_LOT_BATCH, RAW_LOT, RAW_LOT_TRACES, LABEL_COMMANDS, LABEL_HISTORIES
+  service: LotCreateLabelReturn.java  
+  2. 打印测试
+  
+10. UI-物料标签打印集-----------------------------------
+  page: 配置界面
+  -----------excel导入 物料标签打印集, 物料批次批量创建界面批量打印
+  table: RAW_LOT_BATCH
+
+11. OI, MI-部件入库-----------------------------------
+  page: OI-->raw-lot-stock-in   MI-->raw-in-material
+  table: RAW_LOT, RAW_LOT_TRACES
+  service: LotInStore.java
+
+  入库代码注释了,  不然style깨짐
+  
+12. MI-委外出库-----------------------------------
+  page: wip-lot-depute-out
+  table: LOT, LOT_TRACES, LOT_DEPUTES
+  service: WipLotDepute.java
+
+13. MI-委外回库-----------------------------------
+  page: wip-lot-depute-return
+  table: LOTS, LOT_TRACES, LOT_DEPUTES
+  service: LotDeputeReturn.java
+
+14. MI-委外入库-----------------------------------
+  page: wip-lot-depute-in
+  table: LOTS, LOT_TRACES
+  service: WipLotStore.java
+
+15. MI-委外回线-----------------------------------
+  page: wip-lot-return-line
+  table: LOTS, LOT_TRACES
+  service: WipLotReturnLine.java
+
+16. MI-通用检查-----------------------------------
+  page: fac-lot-common-test
+  table: LOTS, LOT_TESTS, LOT_TRACES
+  service: WipLotTest.java
+  获取测试项的service
+
+21 23:00接熊-->酒店
+22 8:00出发-->动物园-->中山公园-->里院海鲜音乐餐吧-->栈桥-->五四广场,奥帆中心-->回酒店-->见老春
+23 吃饭-->泡桑拿-->见老朱
+24 10:00出发去机场
+
+
+
+  bom_id是产品编码
+  Raw_Mat_Traces: 申请的物料, 补料
+  RAW_LOT_TRACES: 物料批次记录
+  Lot_Traces: 批次记录
+  Lot_Test: 批次检验记录
+  PRODUCTION_SUMMARIES: 生产记录 工单, 工序, 时间维度
+  PRODUCT_ORDERS: 更新计划,投入,再制
+
+
+Operation테이블에서 ERP_NAME으로  工序维度
+material테이블에서 Product_model이 CI,APU... 등등
