@@ -51,8 +51,8 @@ zpl online: 온라인테스트 시 ^A6N, 0으로 바꿈, 한글깨짐 문제
 에이전트 접속 후 설정탭 클릭하고 http://localhost:9010/rest 를 입력하고 엔터치면 정보들이 자동으로 입력된다.
 프린트 선택 후 저장 버튼 누른다.
 라벨화면에 접속하여 설정탭 클릭하고
-    服务器地址: http://xlabel.qhweixun.com/rest
-              ws://IP地址
+    服务器地址: http://xlabel.szweixun.com.cn/rest
+    打印代理地址: ws://IP地址
 
 \term\lot\things-term-create-lot.html
 _labelModelResponsed

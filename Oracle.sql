@@ -19,6 +19,8 @@ SELECT ltrim('abaaaabbbcda','ab') FROM dual;
 -------------cda
 SELECT substr('130123456789',3,8) 截取字符串 FROM dual;
 -------------01234567
+SELECT substr('aaaa-bbbb-cc',instr('aaaa-bbbb-cc','-',-1)+1) FROM dual;
+-------------cc    截取最后一个'-'后面的字符串
 
 --------------------------------------------数字函数--------------------------------------------
 -------------如果表中dummy列有为NULL，就替换成0

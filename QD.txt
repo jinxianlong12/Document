@@ -94,7 +94,8 @@
   Raw_Mat_Traces: 申请的物料, 补料
   RAW_LOT_TRACES: 物料批次记录
   Lot_Traces: 批次记录
-  Lot_Test: 批次检验记录
+  Lot_Test: 批次检验记录, 检查项点
+  Lot_Defect: 不良记录
   PRODUCTION_SUMMARIES: 生产记录 工单, 工序, 时间维度
   PRODUCT_ORDERS: 更新计划,投入,再制
 
