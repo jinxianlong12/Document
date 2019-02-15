@@ -123,10 +123,23 @@ group by nation;
 -------------Japan	Tokyo
 -------------USA	New York,Bostom
 
+---1. 添加数据库: 用Database Configuration   添加数据库
+---2. cmd界面创建用户(cmd—> sqlplus /nolog; conn / as sysdba): create user user_name identified by pwd;
+---3. 给用户赋权限: grant connect,resource,dba to user_name;
+---4. 导出数据库: exp user_name/pwd@database_name  dumpfile =xx.dmp ;
+---5. 导入数据库: imp user_name/pwd@localhost/database_name file="D:\xx.DMP" full=y;
 
+---登陆: grant create session to zhangsan;
+---使用表空间: grant unlimited tablespace to zhangsan;
+---创建表: grant create table to zhangsan;
+---删除表: grant drop table to zhangsan;
+---插入表: grant insert table to zhangsan;
+---更新表数据: grant update table to zhangsan;
+---修改表结构: grant alter table on table_name to user_name;
+---查询表: grant select on table_name to user_name;
+---创建过程: grant create any procedure to username;
+---执行过程: grant execute any procedure to username;
+---授予所有权限(all)给所有用户(public): grant all to public;
 
-
-
-
-
-
+---导出表: exp qdcrrcoes/crrcoes@127.0.0.1:1521/qdcrrcoes file=d:/diy.dmp tables=(DIY_GRIDS, DIY_SERVICES)
+---导入表: imp crrcoes/crrcoes@localhost:1521/oes file=d:/diy.dmp tables=(DIY_GRIDS, DIY_SERVICES)

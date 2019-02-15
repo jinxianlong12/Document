@@ -1,6 +1,47 @@
+< ID Mapping Pattern is 4 >
+  ZONE,SESSION,UNIT,SHELVES
+
+< Pattern Example >
+  {z}-{s}-{u}-{sh} = D3F-01-01-01
+  {z}{s}-{u}{sh} = D3F01-0101
+
+
+< Property Example >
+  Session Digits = 1   => D3F-1-01-01
+  Session Digits = 2  => D3F-01-01-01
+
+  Unit Digits = 1  => D3F-01-1-01
+  Unit Digits = 2  => D3F-01-01-01
+
+  Default = 2
+
+
+< Shelf Pattern Example >
+  Shelf Pattern  = 000  + ( 5 Shelf )  =>   D3F-01-01-005
+  Shelf Pattern  = 000  + ( 10 Shelf )  =>   D3F-01-01-010
+
+  Shelf Pattern  = ###  + ( 5 Shelf ) =>   D3F-01-01-5
+  Shelf Pattern  = ###  + ( 10 Shelf ) =>   D3F-01-01-10
+
+  Default = 00
+
+
+< Stock Scale >
+Size of box in a Rack
+
+
+Default = 1
+ex) if setting is 0.5, rack size is diminished Twice
+
+
+< Using Pattern >
+  DG Pattern = {z}-{s}-{u}-{sh}
+  HJ Pattern = {z}-{s}-{sh}-
+
+
 Publisher------------------------------------------------------------------------------------>
   restful url: {{factory_url}}/rest/publishers/initData?subject={{SCENE_ID}}
-     http://xmonitor.qhweixun.com/rest/publishers/SCENE-559/init_data
+     http://xmonitor.szweixun.com.cn/rest/publishers/SCENE-559/init_data
   ******restful사용법은 562화면 참고, 한화면에서 selectbox하나로 여러개 컴포넌트 값을 변경할때 참고(form 액션을 restful처럼 사용)
   ******한 scene에 여러개 데이터 소스가 있으면 액션 하나로 한번에 다 가져온다.
   ******클릭 시 팝업 보여주는기능은 ramaxel eq화면 참고, eqId를 화면에서 코딩으로 넘긴후 팝업화면에서 받아서 화면 로딩시 서버에 요청 보내는 형식이다.

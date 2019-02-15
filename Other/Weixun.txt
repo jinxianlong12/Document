@@ -26,3 +26,6 @@ guide page----->
 192.168.0.17:8080
 id：634530876
 密码：tv151k
+
+exp qdcrrcoes/crrcoes@127.0.0.1:1521/qdcrrcoes file=d:/diy.dmp tables=(DIY_GRIDS, DIY_SERVICES)
+imp crrcoes/crrcoes@localhost:1521/oes file=d:/diy.dmp tables=(DIY_GRIDS, DIY_SERVICES)

@@ -15,3 +15,5 @@ server.context.path   IP:관리자 페이지 포트(ip:8080)
 파일 교체하고 안될때 캐시 삭제 함.
 
 2. 이미지 업로드 에러가 날때: 에러가 나는 폴더를 만들어 준다.
+
+TRUNCATE attachments, scene_groups RESTART IDENTITY
