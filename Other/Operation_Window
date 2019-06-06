@@ -15,5 +15,9 @@ server.context.path   IP:관리자 페이지 포트(ip:8080)
 파일 교체하고 안될때 캐시 삭제 함.
 
 2. 이미지 업로드 에러가 날때: 에러가 나는 폴더를 만들어 준다.
+서버에 properties파일에 
+server.tomcat.basedir=/mnt/demo/temp
+이런 설정 추가하고 다시 재부팅 하면 되우
 
+3. 테이블 초기화
 TRUNCATE attachments, scene_groups RESTART IDENTITY

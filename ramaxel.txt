@@ -1,13 +1,19 @@
-以下是MES生产服务器信息：
- 
-用户名：.\appadmin
-密码：Pwd4admin
-
-mstsc /v:172.26.16.164 /admin
- 
 MESAPPSVR01.ramaxel.local	172.26.16.162	MES 应用服务器1
 MESAPPSVR02.ramaxel.local	172.26.16.163	MES 应用服务器2
 MESREPORT01.ramaxel.local	172.26.16.164	看板&监控报表服务器
 MESEAP01.ramaxel.local	172.26.16.165	EAP设备数据采集服务器
 MESDEV01.ramaxel.local	 172.26.16.166	MES开发测试服务器（MES、EMI）
 172.26.16.167 Report服务器
+
+Server name            Ip address       Username:password 
+V12dg1cctv1            172.26.16.76     appadmin:Pwd4admin
+V12DG1XMON1            172.26.16.77     appadmin:abcd@1234
+mstsc /v:172.26.16.164 /admin   172.26.16.164    appadmin:Pwd4admin
+
+ramaxel-product: dgprd1234
+wangzhen  lipengpeng weixun@1234    4608*1024
+172.26.15.231          admin Pw.123456
+
+119.145.38.143 下载 Easy Connect之后
+服务器地址: https://119.145.38.143
+用户名: wangcd  密码: qwer@1234

@@ -101,6 +101,9 @@ SELECT to_date('19991201','yyyy-mm-dd') FROM dual;
 SELECT to_number('1999') year FROM dual;
 -------------1999(转换成int类型)
 
+update scenes
+set model =  replace(model,'微软雅黑','黑体') 
+
 --------------------------------------------其他--------------------------------------------
 SELECT nullif(expr1, expr2) FROM table_name;
 -------------用于比较表达式expr1和expr2，相等返回null，否则返回expr1.

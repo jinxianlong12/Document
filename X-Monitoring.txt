@@ -1,58 +1,3 @@
-< ID Mapping Pattern is 4 >
-  ZONE,SESSION,UNIT,SHELVES
-
-< Pattern Example >
-  {z}-{s}-{u}-{sh} = D3F-01-01-01
-  {z}{s}-{u}{sh} = D3F01-0101
-
-
-< Property Example >
-  Session Digits = 1   => D3F-1-01-01
-  Session Digits = 2  => D3F-01-01-01
-
-  Unit Digits = 1  => D3F-01-1-01
-  Unit Digits = 2  => D3F-01-01-01
-
-  Default = 2
-
-
-< Shelf Pattern Example >
-  Shelf Pattern  = 000  + ( 5 Shelf )  =>   D3F-01-01-005
-  Shelf Pattern  = 000  + ( 10 Shelf )  =>   D3F-01-01-010
-
-  Shelf Pattern  = ###  + ( 5 Shelf ) =>   D3F-01-01-5
-  Shelf Pattern  = ###  + ( 10 Shelf ) =>   D3F-01-01-10
-
-  Default = 00
-
-
-< Stock Scale >
-Size of box in a Rack
-
-
-Default = 1
-ex) if setting is 0.5, rack size is diminished Twice
-
-
-< Using Pattern >
-  DG Pattern = {z}-{s}-{u}-{sh}
-  HJ Pattern = {z}-{s}-{sh}-
-
-
-Publisher------------------------------------------------------------------------------------>
-  restful url: {{factory_url}}/rest/publishers/initData?subject={{SCENE_ID}}
-     http://xmonitor.szweixun.com.cn/rest/publishers/SCENE-559/init_data
-  ******restful사용법은 562화면 참고, 한화면에서 selectbox하나로 여러개 컴포넌트 값을 변경할때 참고(form 액션을 restful처럼 사용)
-  ******한 scene에 여러개 데이터 소스가 있으면 액션 하나로 한번에 다 가져온다.
-  ******클릭 시 팝업 보여주는기능은 ramaxel eq화면 참고, eqId를 화면에서 코딩으로 넘긴후 팝업화면에서 받아서 화면 로딩시 서버에 요청 보내는 형식이다.
-  ******비쥬얼라이저의 예제는 Len에 있음.
-  Path: /elidom/stomp/topic/hatiolab-hq/smart/{{SCENE-NAME}}
-  scene 가져오기: http://hatiolab.pointhing.xyz/rest/scenes/168
-  비디오의 url: ws://192.168.0.3 (WS Video URL)
-  mes화면의 라벨-->scene화면은 보여주기만 하는 화면이다. 이미지들은 시스템 설정에 file.context.path 설정한 경로에서 불러온다.
-
-   P로 설정하면 polling interval에 설정된 시간마다 실행된다, S로 설정해야 화면에서 지정한 시간대로 실행됨.
-
 属性------------------------------------------------------------------------------------>
   text--글씨
   fillStyle--배경채우기 색상
@@ -69,14 +14,6 @@ Publisher-----------------------------------------------------------------------
 
   indoor map-tab과 같이 사용되며 indoor의 id를 지정하고 tab reference를 indoor의 id와 같게 하면 둘이 한 세트가 된다.
 
-데이터소스------------------------------------------------------------------------------------>
-  stomp:node-red혹은 Publisher와 연동해서 사용, Publisher 쓸때 굳이 쓸 필요 없음.
-          URL: 서버주소(http://xmonitor.qhweixun.com/elidom/stomp)
-          Subject: node-red의  Destination(/elidom/stomp/topic/hatiolab-hq/smart/SCENE-282)
-  mqtt: node-red와 연동해서 사용
-  firebase: 구글에서 제공하는 클라우드 데이터베이스 같은 기능임.
-  restful: 일반적인 http와 같음, 화면에서 URL을 지정하고 해당 URL로부터 데이터를 받아온다. node-red일수도 있고 Publisher일수도 있음.
-
 애니메이션------------------------------------------------------------------------------------>
   OutLine: target으로 지정된 컴포넌트의 궤도를 타고 움직인다.
   Waiting Time: 설정한 시간 만큼 지연 후 애니메이션이 작동한다. 1000=1초
@@ -86,6 +23,14 @@ Publisher-----------------------------------------------------------------------
   Theta: 각도
   Heartbeat-->scale: 설정한 배수크기 만큼 커짐
 
+
+데이터소스------------------------------------------------------------------------------------>
+  stomp:node-red혹은 Publisher와 연동해서 사용, Publisher 쓸때 굳이 쓸 필요 없음.
+          URL: 서버주소(http://xmonitor.qhweixun.com/elidom/stomp)
+          Subject: node-red의  Destination(/elidom/stomp/topic/hatiolab-hq/smart/SCENE-282)
+  mqtt: node-red와 연동해서 사용
+  firebase: 구글에서 제공하는 클라우드 데이터베이스 같은 기능임.
+  restful: 일반적인 http와 같음, 화면에서 URL을 지정하고 해당 URL로부터 데이터를 받아온다. node-red일수도 있고 Publisher일수도 있음.
 
 Mqtt------------------------------------------------------------------------------------>
   mqtt: ID하고 Topic 같이야 함
@@ -126,16 +71,37 @@ ctrl+enter  script입력시 전체화면
 ctrl+shift+e-->json파일 export
 ctrl+del-->초기데이터 삭제
 
-구축필요한 것들------------------------------------------------------------------------------------>
-X-Monitoring 싸이트(고객과 소통이 가능한 웹싸이트) 홍보용
-데모가능한 싸이트
-  -规范和控制客户试用工作，保证客户试用顺利、有序的进行；
-  -获取产品在实际运行环境下的运行数据；
-  -检验产品的性能、功能和可靠性等指标；
-  -检验产品的网络适应性、与其他产品的兼容性；
-  -检验产品是否适应销售，商务等流程；
-  -检验产品的数据资料是否满足实际使用的需求；
-  -跟踪、监控客户适用遗留问题的解决。
-百度推广
-对重点和高价值客户进行回访，加强客户关系并了解客户感受和需求
-为提升产品品牌及影响度而定期进行的宣传、培训和展览等活动
+창고------------------------------------------------------------------------------------>
+< ID Mapping Pattern is 4 >
+  ZONE,SESSION,UNIT,SHELVES
+
+< Pattern Example >
+  {z}-{s}-{u}-{sh} = D3F-01-01-01
+  {z}{s}-{u}{sh} = D3F01-0101
+
+
+< Property Example >
+  Session Digits = 1   => D3F-1-01-01
+  Session Digits = 2  => D3F-01-01-01
+
+  Unit Digits = 1  => D3F-01-1-01
+  Unit Digits = 2  => D3F-01-01-01
+
+  Default = 2
+
+
+< Shelf Pattern Example >
+  Shelf Pattern  = 000  + ( 5 Shelf )  =>   D3F-01-01-005
+  Shelf Pattern  = 000  + ( 10 Shelf )  =>   D3F-01-01-010
+
+  Shelf Pattern  = ###  + ( 5 Shelf ) =>   D3F-01-01-5
+  Shelf Pattern  = ###  + ( 10 Shelf ) =>   D3F-01-01-10
+
+  Default = 00
+
+Default = 1
+ex) if setting is 0.5, rack size is diminished Twice
+
+< Using Pattern >
+  DG Pattern = {z}-{s}-{u}-{sh}
+  HJ Pattern = {z}-{s}-{sh}-

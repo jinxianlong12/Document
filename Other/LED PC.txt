@@ -1,0 +1,20 @@
+1. 工作站
+ 处理器 ：至强系列
+ 内存 ：16GB ECC 内存及以上
+ 硬盘 ：120GB SSD + 1TB HDD以上
+ 显卡 ：Quadro P1000 4G显卡及以上   
+
+2.品牌机 + 显卡
+ 处理器 ：8代I5以上
+ 内存 ：16GB及以上
+ 硬盘 ：120GB SSD + 1TB HDD以上
+ 显卡 ：NVS 510 显卡及以上        
+ 
+
+3.转接头 
+Mini DP转HDMI(母) * 12  
+
+4.HDMI线
+10米DVI-HDMI线 * 10 用于IMC屏幕的Input(埋地) 
+2米HDMI线 * 4 用于显示器Input
+8米HDMI线9根 和10米的HDMI线1根用于IMC屏幕的Input(埋地) 
