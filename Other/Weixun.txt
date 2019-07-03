@@ -7,8 +7,9 @@ Qhwx2018
 hollysys
 
 아리윈 서버----->
-root
-Qhweixun2015
+root                weixun
+Qhweixun2015        Weixun2018
+systemctl restart nginx.service
 
 아리윈 控制台----->
 yuxiangzheng@qhweixun.com

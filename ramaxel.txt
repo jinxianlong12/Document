@@ -7,7 +7,7 @@ MESDEV01.ramaxel.local	 172.26.16.166	MES开发测试服务器（MES、EMI）
 
 Server name            Ip address       Username:password 
 V12dg1cctv1            172.26.16.76     appadmin:Pwd4admin
-V12DG1XMON1            172.26.16.77     appadmin:abcd@1234
+V12DG1XMON1            172.26.16.77     appadmin:Pwd4admin
 mstsc /v:172.26.16.164 /admin   172.26.16.164    appadmin:Pwd4admin
 
 ramaxel-product: dgprd1234

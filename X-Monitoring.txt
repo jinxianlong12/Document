@@ -1,3 +1,10 @@
+웨이쉰 패키징 화------------------------------------------------------------------------------------>
+4.js-->Things Board
+manifest.json-->Things Board
+index.html-->Things Board
+main.js-->Hatiolab inc, http://xmonitor-guide.szweixun.com.cn/cn/ 
+touch폴더 전부, icon-brand.png, icon-mobile-brand.png, icon-nametag.png
+
 属性------------------------------------------------------------------------------------>
   text--글씨
   fillStyle--배경채우기 색상
