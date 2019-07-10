@@ -33,7 +33,7 @@ touch폴더 전부, icon-brand.png, icon-mobile-brand.png, icon-nametag.png
 
 데이터소스------------------------------------------------------------------------------------>
   stomp:node-red혹은 Publisher와 연동해서 사용, Publisher 쓸때 굳이 쓸 필요 없음.
-          URL: 서버주소(http://xmonitor.qhweixun.com/elidom/stomp)
+          URL: 서버주소(http://xmonitor.szweixun.com.cn/elidom/stomp)
           Subject: node-red의  Destination(/elidom/stomp/topic/hatiolab-hq/smart/SCENE-282)
   mqtt: node-red와 연동해서 사용
   firebase: 구글에서 제공하는 클라우드 데이터베이스 같은 기능임.

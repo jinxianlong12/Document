@@ -8,4 +8,9 @@ index.html-->Things Board
 main.js-->Hatiolab inc, http://xmonitor-guide.szweixun.com.cn/cn/ 
 touch, manifest, icon-brand.png, icon-mobile-brand.png, icon-nametag.png, fivicon.ico 
 
-메뉴얼
+Publisher도 로그인 유저별로 보여줄수 있는지.
+
+어떤거 몇개 하는지 
+맴먼스는 어떻게 되는지
+리포트 개발자 누구? 
+모니터링에 개발자 필요.
