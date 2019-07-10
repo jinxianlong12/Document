@@ -10,7 +10,7 @@ touch, manifest, icon-brand.png, icon-mobile-brand.png, icon-nametag.png, fivico
 
 Publisher도 로그인 유저별로 보여줄수 있는지.
 
+모니터링 교육 한국
+
 어떤거 몇개 하는지 
 맴먼스는 어떻게 되는지
-리포트 개발자 누구? 
-모니터링에 개발자 필요.

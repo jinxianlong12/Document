@@ -127,10 +127,11 @@ group by nation;
 -------------USA	New York,Bostom
 
 ---1. 添加数据库: 用Database Configuration   添加数据库
----2. cmd界面创建用户(cmd—> sqlplus /nolog; conn / as sysdba): create user user_name identified by pwd;
+---2. sql developor里 create user user_name identified by pwd;
 ---3. 给用户赋权限: grant connect,resource,dba to user_name;
 ---4. 导出数据库: exp user_name/pwd@database_name  dumpfile =xx.dmp ;
 ---5. 导入数据库: imp user_name/pwd@localhost/database_name file="D:\xx.DMP" full=y;
+---imp jinxl/oes@oes file=D:\oes_20181108.DMP fromuser=system touser=jinxl
 
 ---登陆: grant create session to zhangsan;
 ---使用表空间: grant unlimited tablespace to zhangsan;
@@ -146,3 +147,7 @@ group by nation;
 
 ---导出表: exp qdcrrcoes/crrcoes@127.0.0.1:1521/qdcrrcoes file=d:/diy.dmp tables=(DIY_GRIDS, DIY_SERVICES)
 ---导入表: imp crrcoes/crrcoes@localhost:1521/oes file=d:/diy.dmp tables=(DIY_GRIDS, DIY_SERVICES)
+
+---select * from dba_users; 查看数据库里面所有用户，前提是你是有dba权限的帐号，如sys,system
+---select * from all_users;  查看你能管理的所有用户！
+---select * from user_users; 查看当前用户信息!
