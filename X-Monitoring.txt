@@ -112,3 +112,14 @@ ex) if setting is 0.5, rack size is diminished Twice
 < Using Pattern >
   DG Pattern = {z}-{s}-{u}-{sh}
   HJ Pattern = {z}-{s}-{sh}-
+
+
+a.    设置密码需采用字母＋数字原则，且密码位数必须为八位或以上。-->user.password.validation.enable 值设为 true
+b.    规定密码更换频率；-->user.password.change.period.day 设置日期(单位是分钟天)
+c.    规定密码修改时不可使用最近密码次数；-->user.recent.used.pass.count 设置次数
+d.    必须有安全机制供用户重置密码；-->自带功能
+e.    系统强制要求修改初始密码；-->user.password.expire.enable 值设为 true
+f.    不得以明文方式存储和传输密码；-->自带功能
+g.    必须设置系统自动注销的闲置时间；-->application.properties里设置 session.timeout后重启服务器
+h.    必须设置密码输入错误的允许次数；-->login.fail.lock.count 设置次数
+i.    必须设置密码输入错误后的锁定时间；-->user.pass.lock.minute 设置时间(单位是分钟)

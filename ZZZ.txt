@@ -1,6 +1,7 @@
 ﻿to do>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    메인화면--최종버전 나오면 새로운 로그인 화면으로 바꾼후 파일 따보
-    동영상 완료되면 웨이쉰 홈페이지 서버에 올리기
+Publisher 超级用户라고 되있는 유저만 다 볼수 있고 管理员이라고만 되있는 유저는 자신이 만든 Publisher만 볼수 있게. 
+데이터 조회 오기전에 뱅뱅 돌아가는?  로딩이라는걸 알수 있게
+서버에서 케쉬, 같은 컨반을 조회하는 여러 사용자가 있을때 db쿼리는 한번만 하게...
 
 4.js-->Things Board
 manifest.json-->Things Board
@@ -8,9 +9,13 @@ index.html-->Things Board
 main.js-->Hatiolab inc, http://xmonitor-guide.szweixun.com.cn/cn/ 
 touch, manifest, icon-brand.png, icon-mobile-brand.png, icon-nametag.png, fivicon.ico 
 
-Publisher도 로그인 유저별로 보여줄수 있는지.
+1. 서안 일정--
+2. 라마셀->8월 둘째주 오픈일정 확인
+3. 한국->8월26일
+  -mqtt 서버 구출
+  -새로나온 컴포넌트
 
-모니터링 교육 한국
+라마셀 새버전 배포-->메인페이지 에러창, 데이터 리스트 변두리 속성, 플레이 그룹에서 플레이시 변두리 흰색, 
+8월 15일새버전 나옴
 
-어떤거 몇개 하는지 
-맴먼스는 어떻게 되는지
+금요일, 8.2일 일본 MES서버 설치
