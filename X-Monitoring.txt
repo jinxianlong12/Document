@@ -3,23 +3,47 @@
 manifest.json-->Things Board
 index.html-->Things Board
 main.js-->Hatiolab inc, http://xmonitor-guide.szweixun.com.cn/cn/ 
-touch폴더 전부, icon-brand.png, icon-mobile-brand.png, icon-nametag.png
+touch, manifest, icon-brand.png, icon-mobile-brand.png, icon-nametag.png, fivicon.ico 
 
 属性------------------------------------------------------------------------------------>
-  text--글씨
-  fillStyle--배경채우기 색상
-  strokeStyle--윤곽선 색상
-  fontColor--글씨 색상
-  rotation--회전
-  hidden--숨김
-  location--위치 좌표 {x:100,y:100}->데이터를 서버로 부터 받아서 구현함, 직접 디자인 화면에서 설정하면 에러남
-  dimention--크기(데이터 형식과 사용방법은 location과 동일)
-  data--Array 혹은 Object
-  value--단일 값
-  started--:데이터 값을 받아 애니메이션 시작시킬때 사용
-  reference--global-ref 컴포넌트에서 reference 속성 바꿀때 사용.
+text : 컴포넌트의 텍스트 속성
+fillStyle : 컴포넌트의 배경색상
+strokeStyle : 컴포넌트의 선 색상
+fontColor : 컴포넌트의 텍스트의 색상
+hidden : 컴포넌트의 숨김 여부 (true or false)
+location : 컴포넌트의 위치 좌표 (부모 컴포넌트의 left/top 위치로부터의 상대 좌표 값)값은 { x: 10, y: 10 } 형식의 오브젝트이어야 한다.x, y 포지션은 컴포넌트의 중심 좌표를 의미한다.
+started : 컴포넌트에 설정된 애니메이션의 동작 상태started 에 true 값을 바인드하면, 애니메이션이 시작된다.started 에 false 값을 바인드햐면, 애니메이션이 종료된다.
+reference : 컴포넌트가 참조하는 대상현재는 tab 컴포넌트의 reference 를 변경할 때만 사용된다.
+data : 데이타 전달을 위한 컴포넌트 속성, 모든 컴포넌트는 data 값을 가질 수 있다.
+option: select box에 값을 줄때.
+source: data-transform(페이징)
+accessor: data-transform 그룹 컴포넌트에서 사용하려고 했던 것 같은데, 현재 작동하지는 않음
+play; gif-view(true/false) 映射
+scale, rotate, dimension, translate: 3D 컴포넌트에서 사용하려고 했던 것 같음 {x: 0.1, y: 0.1, z: 0.1} 
 
-  indoor map-tab과 같이 사용되며 indoor의 id를 지정하고 tab reference를 indoor의 id와 같게 하면 둘이 한 세트가 된다.
+value : 컴포넌트의 대표 속성
+value는 컴포넌트의 대표 속성을 의미하는 특별한 속성이다.
+즉, value 속성을 변경하면 해당 컴포넌트의 대표적인 속성값이 변경된다.
+데이타 바인딩에 의해 변경될 가능성이 가장 큰 속성을 컴포넌트의 대표 속성으로 선정하였으므로, value 속성을 이용하면, 하나의 데이타를 여러 컴포넌트에 대해서 바인딩을 할 때 편리할 경우가 많다.
+각 컴포넌트의 대표 속성은 다음과 같다.
+일반적인 컴포넌트의 대표 속성은 text 이다. (text, rect, ellipse, .. )
+gauge, progress 등 단일 값을 표현하는 컴포넌트의 대표 속성은 value 이다.
+indoormap, tab 컴포넌트는 activeIndex (액티브 페이지 인덱스) 이다.
+image-view, video, audio 등 URL 속성을 가지는 컴포넌트의 대표속성은 src (url) 이다.
+form 컴포넌트의 대표 속성은 action 이다.
+select, radio, checkbox 등 html 컴포넌트의 대표 속성은 value 이다.
+input-xxx, button, textarea 등 html 컴포넌트의 대표 속성은 text 이다.
+iframe, img, video 의 대표 속성은 source (url) 이다.
+link의 대표 속성은 href 이다.
+google-map, baidumap의 대표 속성은 latlng 이며, 값은 { lat, lng } 형식의 오브젝트이다.
+chartjs, table의 대표 속성은 data 이다.
+restful 컴포넌트의 대표 속성은 url 이다.
+global-ref, local-ref 의 대표 속성은 ref 이다.
+scale:
+accessor:
+source:
+  
+indoor map-tab과 같이 사용되며 indoor의 id를 지정하고 tab reference를 indoor의 id와 같게 하면 둘이 한 세트가 된다.
 
 애니메이션------------------------------------------------------------------------------------>
   OutLine: target으로 지정된 컴포넌트의 궤도를 타고 움직인다.
@@ -29,15 +53,6 @@ touch폴더 전부, icon-brand.png, icon-mobile-brand.png, icon-nametag.png
   Repeat: 무한반복
   Theta: 각도
   Heartbeat-->scale: 설정한 배수크기 만큼 커짐
-
-
-데이터소스------------------------------------------------------------------------------------>
-  stomp:node-red혹은 Publisher와 연동해서 사용, Publisher 쓸때 굳이 쓸 필요 없음.
-          URL: 서버주소(http://xmonitor.szweixun.com.cn/elidom/stomp)
-          Subject: node-red의  Destination(/elidom/stomp/topic/hatiolab-hq/smart/SCENE-282)
-  mqtt: node-red와 연동해서 사용
-  firebase: 구글에서 제공하는 클라우드 데이터베이스 같은 기능임.
-  restful: 일반적인 http와 같음, 화면에서 URL을 지정하고 해당 URL로부터 데이터를 받아온다. node-red일수도 있고 Publisher일수도 있음.
 
 Mqtt------------------------------------------------------------------------------------>
   mqtt: ID하고 Topic 같이야 함
@@ -73,19 +88,17 @@ clone: 어떤 상대를 일정한주기 간격으로 계속 복사할때 사용.
         clone사용 시 복사 대상컴포넌트의 ID외에 template prefix도 지정해 주어야 한다.
 target-->(key)로 설정하면 ID값이 key와 같은 컴포넌트들을 찾아가서 값을 매핑해준다.
 
-eval-->this, parent, value,등 주로 사용, javascript 언어임
-ctrl+enter  script입력시 전체화면
-ctrl+shift+e-->json파일 export
-ctrl+del-->초기데이터 삭제
+eval-->this, parent, value,등 주로 사용
 
 창고------------------------------------------------------------------------------------>
+쿼리 쓸때 로케이션에 자재가 있던없던 location 테이블 먼저 조회하고 자재 조회 결과를 조인한다.
+
 < ID Mapping Pattern is 4 >
   ZONE,SESSION,UNIT,SHELVES
 
 < Pattern Example >
   {z}-{s}-{u}-{sh} = D3F-01-01-01
   {z}{s}-{u}{sh} = D3F01-0101
-
 
 < Property Example >
   Session Digits = 1   => D3F-1-01-01
@@ -95,7 +108,6 @@ ctrl+del-->초기데이터 삭제
   Unit Digits = 2  => D3F-01-01-01
 
   Default = 2
-
 
 < Shelf Pattern Example >
   Shelf Pattern  = 000  + ( 5 Shelf )  =>   D3F-01-01-005
@@ -113,6 +125,9 @@ ex) if setting is 0.5, rack size is diminished Twice
   DG Pattern = {z}-{s}-{u}-{sh}
   HJ Pattern = {z}-{s}-{sh}-
 
+네이버폰트 : 나눔고딕, 나눔명조, 나눔스퀘어, 나눔바른고딕, 
+구글폰트 : Noto Sans KR, roboto
+기타 폰트 : 참고사이트-https://hellchosun.net/52
 
 a.    设置密码需采用字母＋数字原则，且密码位数必须为八位或以上。-->user.password.validation.enable 值设为 true
 b.    规定密码更换频率；-->user.password.change.period.day 设置日期(单位是分钟天)
@@ -123,3 +138,42 @@ f.    不得以明文方式存储和传输密码；-->自带功能
 g.    必须设置系统自动注销的闲置时间；-->application.properties里设置 session.timeout后重启服务器
 h.    必须设置密码输入错误的允许次数；-->login.fail.lock.count 设置次数
 i.    必须设置密码输入错误后的锁定时间；-->user.pass.lock.minute 设置时间(单位是分钟)
+
+优化:
+-Xms20480M -Xmx20480M -Xmn768M -XX:MaxMetaspaceSize=512M -XX:MetaspaceSize=512M -XX:+UseG1GC -XX:MaxGCPauseMillis=100 -XX:+ParallelRefProcEnabled
+REDIS: 两个conf文件里   1. bind  127.0.0.1 注释, 2. protected-mode no, 3. save 900 1 等三行注释
+
+1. 负载均衡
+2. redis하고 모니터링 서버를 새 서버에 설치하고 nginx에서 클라이언트 80있으면 81로 된 서버를 추가.
+    81서버가 새서버를 바라보게 함, IMC에서 81로 접속하고 76 redis를 restart 
+
+中央监控室构建的目的是实现企业的可视化管理
+已标准化, 数值化的指标管理企业现状
+把企业的现状用数据的方式展现出来,
+通过数据分析, 最小化现阶段面临的问题, 预测未来, 提前做出相应的措施.
+
+通过平台, 
+1. 关联部门和部门,关联上级和下级, 
+2. 实现管理者和现场人员之间的信息的共享.
+3. 分析员工绩效明确成果与补偿,
+   通过平台把企业的问题点凸出来, 实时发现异常, 整顿异常, 达到减少浪费, 改善生产以及提高企业的效率
+
+期待效果:
+1. 实时的确认生产信息及设备状态, 实时监控处理异常
+2. 利用多种指标, KPI分析现状
+3. 通过准确的信息改善业务环境
+4. 提高生产效率, 节约成本
+5. 优化作业环境, 实现无纸化, 把生产关联信息扩散到工厂的任何角落
+
+BI是数据分析系统, 强点在于数据的分析和展示, 相当于强大的报表系统.
+X-Monitoring是数据分析和展示基础上, 结合现实世界, 把现实场景描述到看板界面上.
+把我们要显示的数据, 实时的, 生动的, 酷炫的, 展示出来, 
+让人直观的了解现场, 直观地了解信息, 不是一昧的去看数据, 提高用户的体验.
+适合中央监控系统
+
+能源管理网站
+http://125.88.36.148:7819/Account/Login/index.html
+KPtest
+pilot@123
+
+jdbc:mysql://localhost:3306/weixun?serverTimezone=UTC

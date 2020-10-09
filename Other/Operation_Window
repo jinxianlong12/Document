@@ -20,4 +20,7 @@ server.tomcat.basedir=C:/X-Monitoring/server/xmonitor/temp
 이런 설정 추가하고 다시 재부팅 하면 되우
 
 3. 테이블 초기화
-TRUNCATE attachments, scene_groups RESTART IDENTITY
+TRUNCATE error_logs RESTART IDENTITY
+
+
+/mnt/postgre/pgsql/bin/pg_ctl -D /mnt/postgre/pgsql_data/ -l /mnt/postgre/pgsql_data/logfile start

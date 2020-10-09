@@ -1,0 +1,241 @@
+씽즈보드는 하티오랩에서 연구개발하고 파트너가 영업하는 형식
+4.0버전으로 오래동안 감, 큰 업데이트는 안할거임. 이후에버전은 툴을 지원하고 파트너가 패키징화 하면서 개발
+
+Things Board와Things factory결합한  앱에서 핸드폰으로 投屏하는 기능
+라벨을 모니터링에 추가했음, 이미지 프린트 하는 형식
+
+Polymer=>Lit Element
+Things Factory Micro Module=>서버 컨셉도 만들수 있다.
+Server: NodeJS->TypeScript, ORM->TypeORM, WAS->KOA(middle ware), GraphQL
+Client: Lit-Element, Redux Pattern, GraphQL, Lazy Loading, Webpack, Localization - i18next, Transpiler-bable
+Tech.-common; NPM, JWT authentication, Yo generator-app, base-module, ui-module
+
+RESTFul
+부족점 2가지, 애매모호한 정의, Login같은 경우 어떤 method가 정확한지 애매모하함
+db record를 가져올때, 여러 테이블을 조합하여서 데이터를 가져올때.
+Under fetch (필요한거 다 없어)
+Over fetch (필요없는거 까지 다 줘)
+
+GraphQL
+관계까지 다 처리하여서 가져온다.
+Graph Model(Node, Edge)
+필요한 데이터를 요청하여서 받을수 있다.
+
+localhost:3000/graphiql
+yarn serve:dev
+
+# [things-board교육] 01 | 프레임웍소개 및 실습
+#hatiolab/things-board
+
+### 프레임웍소개 | Things Factory Micro Module Edition
+Polymer: 구글에서 더 이상 지원하지 않음.
+
+* Things factory shell
+다양한 모듈들을 shell에 조립하여서 사용.
+
+* Tech - Server
+ * TypeScript
+ * NodeJS
+ * TypeORM(NodeJS기반)
+ * KOA(express보다 보완된, was)
+ * GraphQL(RESTFul하고 비슷) - 프레임웍에서 GraphQL과 RESTful를 모두 지원
+
+* Tech - Client
+ * Lit-Element(단 방향 바인드)
+ * Redux Pattern(최근 프레임웍들이 채택)
+ * GraphQL
+ * Lazy Loading(실제 쓸때 필요한 것들을 가져옴, 그래서 모바일에서 성능이 나쁘지 않다)
+ * Webpack
+ * Localization - i18next
+ * Transpiler - babel
+
+* Tech - Common
+ * NPM
+ * JWT authentication(인증)
+ * Yo generator - app, base-module, ui-module
+
+* RESTFul
+부족점 2가지, 애매모호한 정의, Login같은 경우 어떤 method가 정확한지 애매모하함
+db record를 가져올때, 여러 테이블을 조합하여서 데이터를 가져올때.
+Under fetch (필요한거 다 없어)
+Over fetch (필요없는거 까지 다 줘)
+
+* GraphQL
+관계까지 다 처리하여서 가져온다.
+Graph Model(Node, Edge)
+필요한 데이터를 요청하여서 받을수 있다.
+
+### 실습
+1. 환경설정( [https://github.com/things-factory/shell](https://github.com/things-factory/shell)  를 참고)
+2. *generator-things-factory*로 app를 생성
+```bash
+yo things-factory:app
+```
+
+*generator-things-factory*구조를 참고하면 생성할 수 있는 파일들을 확인 가능함.
+[image:2412AA10-3235-45D3-8C88-9A7B6C335EE2-43200-0001089D4587E72C/604E90CC-9E0E-4EC1-831D-D418CB89A0F9.png]
+
+3. 테이블생성(디폴트로 sqllite를 사용, 다른 db도 사용가능함)
+```bash
+yarn migration
+```
+
+실행가능한 스크립트는 `package.json`파일을 참고하면 됨.
+
+4. app실행
+```bash
+yarn serve:dev
+```
+
+ * dependency 확인
+ `localhost:3000/dependencies`
+ * 테이블관계 확인
+ `localhost:3000/graphql-voyager`
+ * 쿼리 테스트
+ `localhost:3000/graphiql`
+
+5. login기능추가
+```bash
+yarn add @things-factory/auth-ui-jwt@*
+```
+마지막 `@*`는 최신버전을 가져옴
+
+직접 `package.json`파일에 dependency를 추가하여서 사용가능함
+```json
+"dependencies": {
+ "@things-factory/auth-ui-jwt": "*"
+}
+```
+```bash
+yarn install
+```
+
+6. header bar에 more버튼 추가
+```bash
+yarn add @things-factory/context-ui@*
+yarn add @things-factory/apptool-ui@*
+yarn add @things-factory/more-ui@*
+```
+
+ * `context-ui`: context-ui를 추가하여야만 화면들이 나옴
+ * `apptool-ui`: header bar에 들어갈 container
+ 
+7. `setting-ui`추가
+```bash
+yarn add @things-factory/setting-ui@*
+```
+
+8. `home`page를 추가
+```bash
+yo things-factory:page
+```
+
+`home.js`가 생성된 후, 컴포넌트명을 커스터마이징 element에 맞는 이름격식으로 수정
+```js
+// home을 home-page로 수정
+window.customElements.define('home-page', Home)
+```
+
+`home`화면이 켜졌을 때, header bar에 화면 이름이 찍히게 하는 방법
+```js
+get context() {
+ return {
+  title: 'Home'
+ }
+}
+```
+
+9. 라우터추가
+ * 라우터파일 추가
+```js
+// client폴더아래에 route.js파일 생성
+export default function route(page) {
+  switch (page) {
+    case '':
+      return '/home';
+    case 'home':
+      import('./pages/home');
+      return page;
+  }
+}
+```
+
+ * config파일에 home 라우트정보 추가
+```js
+import bootstrap from './client/bootstrap'
+import route from './client/route'
+
+export default {
+  bootstrap,
+  routes: [{
+    tagname: 'home-page',
+    page: 'home'
+  }],
+  route
+}
+```
+
+10. 메뉴추가
+ * client폴더아래에 viewparts폴더생성
+ * menu.js파일 생성
+```js
+import {
+  LiteElement,
+  html,
+  css,
+  LitElement
+} from 'lit-element'
+
+export class MenuPart extends LitElement {
+  static get styles() {
+    return css`
+      :host {
+        display: block;
+        min-width: 200px;
+      }
+
+      a {
+        display: block;
+        text-decoration: none;
+      }
+    `
+  }
+
+  render() {
+    return html`
+            <a /href/="/home">A</ a>
+            <a /href/="/profile">B</ a>
+            <a /href/="/setting">C</ a>
+            <a /href/="/home">D</ a>
+        `
+  }
+}
+
+customElements.define('menu-part', MenuPart)
+```
+
+ * bootstrap.js파일에 메뉴가 보여줄 위치를 지정
+```js
+import {
+  html
+} from 'lit-html'
+import {
+  appendViewpart,
+  VIEWPART_POSITION
+} from '@things-factory/layout-base'
+import './viewparts/menu'
+
+// 모듈이 맨 처음 실행 될때(entry point)
+export default function bootstrap() {
+  appendViewpart({
+    name: 'menu-part',
+    viewpart: {
+      show: true,
+      template: html `
+        <menu-part></menu-part>
+      `
+    },
+    position: VIEWPART_POSITION.NAVBAR
+  })
+}
+```

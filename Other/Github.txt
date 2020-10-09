@@ -1,0 +1,7 @@
+1. 在github上新建repo
+2. 找到改repo的地址，用命令git clone https://....,  拉取到本地
+3. 打开一个单独的窗口，打开此文件夹
+4. 创建自己的python文件等
+5. git->commit->push
+6. github->settings里有github page
+7. 修改CNAME, Custom domain 绑定申请的域名

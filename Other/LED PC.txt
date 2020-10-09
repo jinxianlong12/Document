@@ -18,3 +18,9 @@ Mini DP转HDMI(母) * 12
 10米DVI-HDMI线 * 10 用于IMC屏幕的Input(埋地) 
 2米HDMI线 * 4 用于显示器Input
 8米HDMI线9根 和10米的HDMI线1根用于IMC屏幕的Input(埋地) 
+
+
+LCD
+55: 13600  121.8*68.5
+46: 9800  102*57
+拼接器等包含在里面. 要先付款

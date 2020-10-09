@@ -7,8 +7,10 @@ Qhwx2018
 hollysys
 
 아리윈 서버----->
-root                weixun
-Qhweixun2015        Weixun2018
+root/*Gc1-Q7}gW2uj>LBTeYE
+weixun/K]LH8PpZGp~t8MbpHWg@
+DB: 3G6C#mX-wf~i6s}%.CnX    port: 5555
+
 systemctl restart nginx.service
 
 아리윈 控制台----->
@@ -30,3 +32,6 @@ id：634530876
 
 exp qdcrrcoes/crrcoes@127.0.0.1:1521/qdcrrcoes file=d:/diy.dmp tables=(DIY_GRIDS, DIY_SERVICES)
 imp crrcoes/crrcoes@localhost:1521/oes file=d:/diy.dmp tables=(DIY_GRIDS, DIY_SERVICES)
+
+
+

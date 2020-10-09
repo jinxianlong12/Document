@@ -16,4 +16,12 @@ wangzhen  lipengpeng weixun@1234    4608*1024
 
 119.145.38.143 下载 Easy Connect之后
 服务器地址: https://119.145.38.143
-用户名: wangcd  密码: qwer@1234
+用户名: pengxf 密码abcd@1234
+
+
+看板服务器: 记忆科技远程连接服务器的话需要以下链接
+https://172.26.18.92/client/index-new.php
+yaoly abcd@1234
+.\appadmin Pwd4admin
+
+속도가 또 느려진다면 서버를 더 늘이거나 reids 负载均衡?

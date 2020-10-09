@@ -1,0 +1,57 @@
+Postgre 安装 
+1. 复制安装文件到目录 (https://www.cnblogs.com/freeweb/p/8006639.html)
+2. 解压文件: tar zxvf postgresql-9.6.18-1-linux-x64-binaries.tar.gz
+3. 创建用户并设置密码: 这里设置密码是linux用户postgres的登录密码，不是pgsql服务器的密码, postgre的密码最后用alter设置
+    useradd postgres
+    passwd postgres
+    # 两次输入密码并确认
+4. 创建pgsql_data目录: mkdir /usr/postgres/pgsql_data
+5. 给postgres用户授权目录访问权限：chown postgres /usr/postgres/pgsql_data/
+6. 切换到postgre 输入平台: su - postgres
+7. 切换之后建议修改~/.bash_profile将pgsql的bin目录加至环境变量中(这步骤上次省略也安装成功)
+    vi  ~/.bash_profile  (vi 打开文件  按i开始编辑   esc  :wq(保存退出))
+    source  ~/.bash_profile
+8. 初始化数据库: /mnt/postgre/pgsql/bin/initdb -D /mnt/postgre/pgsql_data/ (pgsql_data文件夹下面会自动生成文件)
+9. 创建 logfile: logfile文件复制到pgsql_data文件夹下面
+10. 服务器启动命令: /mnt/postgre/pgsql/bin/pg_ctl -D /mnt/postgre/pgsql_data/ -l /mnt/postgre/pgsql_data/logfile start
+    ps -ef | grep postgres 命令查看启动进程
+11. 安装完开放端口权限
+  firewall-cmd --zone=public --add-port=8080/tcp --permanent
+  firewall-cmd --reload 
+   # 重新加载后才能生效
+12. 修改pg_hba.conf, postgresql.conf文件: (host    all             all              0.0.0.0/0              md5), (listen_addresses = '*')
+13. 修改数据库密码: 环境变量没有配好的话用postgre命令窗 进入到bin目录下执行(.\psql)
+    ALTER USER postgres WITH PASSWORD 'psql';
+
+--nginx: sbin 폴더 밑에서 ./nginx -s reload
+
+--文件没有权限的时候 filezilla里 右键文件 给777权限
+
+ps aux|grep redis
+
+ubuntu安装18.04版本-------------------------------------------
+ssh启动的话可以用filezilla连接
+遇到这样的 No supported authentication methods available (server sent: publickey)
+vim /etc/ssh/sshd_config
+PermitRootLogin yes
+StrictModes no
+PasswordAuthentication yes
+service ssh restart
+重启filezilla
+
+ubuntu修改 root 密码: sudo passwd root
+
+nginx: sudo apt-get install nginx
+       nginx配置, 启动
+redis: sudo apt-get install redis-server
+       ps -ef | grep redis
+
+postgres: sudo apt-get install postgres
+安装完后查看版本 psql --version
+查看用户: vi /etc/passwd 
+修改密码: sudo passwd postgres
+
+java: wget https://repo.huaweicloud.com/java/jdk/8u201-b09/jdk-8u201-linux-x64.tar.gz
+      解压后设置环境变量, source /etc/profile  java -version
+
+    服务器启动后  tail -f app...properties  查看服务器启动状态

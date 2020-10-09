@@ -1,0 +1,7 @@
+.\mosquitto -v
+.\mosquitto_sub -h 192.168.1.90 -t topic -p 1883
+.\mosquitto_pub -h 192.168.1.90 -t topic -m helloworld
+
+.\mosquitto -c mosquitto.conf
+.\mosquitto_sub -v -t topic
+.\mosquitto_pub -t topic -m Hello

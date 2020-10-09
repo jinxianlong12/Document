@@ -1,0 +1,38 @@
+admin/weixun@)!%
+
+VPN账号：18688725412@kukahome.com.cn
+密码：  G3l1Q@ks
+
+测试服务器IP地址： 10.10.251.49 和  10.10.251.50
+服务器操作系统为Centos7.5
+服务器登录账号root/kukahome
+
+服务器数据库连接地址：jdbc:oracle:thin:@//10.10.251.50:1521/orcl
+数据库账号：kukaxmes/kukaxmes
+
+label 请部署在10.10.251.49  这台服务器上。 
+
+mes 部署在 /usr/local/MES/server 目录。 两台服务器都是一样的配置
+MES 需要用到的 jdk,nginx, redis, 都放在了 /usr/local/MES/ 这个目录下
+
+姜平	18038320107@kukahome.com.cn	J5LpUZip
+
+70的登录 账号 root/Kuka@MES2020
+
+root Kuka@MES2020  kukahome
+ssh -p 22 root@10.10.251.69
+
+*  set_lot_id: 套件序列号
+*  goods_id: 货号
+*  material_model: 型号
+*  material_spec: 规格
+*  pt_status: 皮套(皮套工单状态)
+*  ml_status: 木料(木料工单状态)
+*  jb_status: 夹板(夹板工单状态)
+*  plan_qty: 计划产量
+*  real_qty: 实际产量
+*  complete_rate: 完成率
+*  delay_rate: 延期率
+*  top5_list: 货号规格Top5
+
+t_date=2020-05-20&workshop_id=1-1-1010-CJ106&line_id=1-1-1010-CJ10603&site_id=1-1010

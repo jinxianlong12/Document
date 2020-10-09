@@ -1,0 +1,12 @@
+하티오랩 신청 라이센스-----------------------------------------------------
+X-Monitoring: 4개+2개(확인중)
+Demo 1: xmonitor.qhweixun.com.cn(확인중)
+홀리시스 2: hollysysxmonitor.qhweixun.com(확인중), 10.4.20.1, 10.4.20.68
+중차 1: 10.96.43.110
+라마셀 1:  kanban.ramaxel.com, 172.26.16.77
+서안 1: 
+
+X-Label:1个+2개(확인중) 
+Weixun Demo-->신청 날짜-2020/6/17. domain-xlabel.szweixun.com.cn
+qhweixun-확인중
+홀리시스 1: hollysysxlabel.qhweixun.com-확인중

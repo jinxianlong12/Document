@@ -40,3 +40,11 @@ file.context.path	File Context Path	http://fw.hatiolab.com:8000
 file.root.path	File Storage Root Path	/home/jinxianlong/uploads
 
 redis.exe-->flushall
+
+
+라벨설치시 license에러 날때 mes 라이센스 복사하고 네임을 라벨 라이센스 네임으로 바꾼다 
+mes index.html에서     <script
+      src="bower_components/crypto-js/crypto-js.js"
+      charset="utf-8"
+    ></script>
+    추가
